@@ -1,0 +1,11 @@
+Homepge: 1.The totk number of products nd totl untity of ll products
+         2.Date time.
+         3.Low stock.
+         3.List Product Inserted in the system.
+Product:1.List of Product in the Table Button for Add New products  
+        2.In the Table user of the system should see Name of Product,Quantity of product,price for each product. 
+          and Total price of products.
+        3.Finally chief of the System should do this different Action :Edit ,Delete and may be View Product.
+StockOut:1.Where Cheif of school Stock manager shall consumer(Stock out) Product Product_Id,Date and Quantity of product used products.  
+         2.Table that show all new update of the products.
+Report:System 

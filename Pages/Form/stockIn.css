@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;   
+}
+section input{
+    padding: 20px;
+    width: 450px;
+}
+section button{
+    padding: 9px;
+    width: 450px;
+    transform: translateX(-9px);
+    background-color: black;
+    border: none;
+    color: white;
+    border-radius: px;
+}
+.Stockin .backbotton{
+    background: #000;
+    border: none;
+    color: white;
+    padding: 5px;
+    margin-left: 10px;
+}
+.Stockin .backbotton a{
+    color: white;
+    text-decoration: none;
+}

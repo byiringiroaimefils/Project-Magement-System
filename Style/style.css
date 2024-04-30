@@ -1,0 +1,442 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #cccccc23;
+}
+
+header {
+    width: 100%;
+    height: 10% auto;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+.logos h2{
+    color: #00001a;
+    transform: translateY(1px);
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul {
+    display: flex;
+    /* flex-direction: column; */
+    margin-left: 20px;
+}
+
+ul li {
+    margin-left: 9px;
+    list-style: none;
+    transform: translateY(7px);
+}
+
+ul li a {
+    text-decoration: none;
+    color: #b1afaf;
+    font-weight: bolder;
+}
+
+ul li a:hover {
+    /* text-decoration: none; */
+    color: black;
+    transition: .5s ease-in-out;
+    /* font-weight: bolder; */
+}
+
+.logo {
+    display: flex;
+}
+
+.logos {
+    transform: translateY(5px);
+
+}
+
+
+.account a {
+    text-decoration: none;
+    font-weight: bolder;
+    margin-right: 20px;
+}
+
+i {
+    display: none;
+}
+
+.icon {
+    width: 20px;
+    transform: translateY(2px);
+}
+.account{
+    display: flex;
+    justify-content: space-between;
+}
+.bar button{
+    display: none;
+}
+
+
+/*-------Body---- */
+.body {
+    min-width: 0px auto;
+    padding: 2%;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 9px;
+}
+
+.div2 {
+    width: 35%;
+    height: 570px;
+    padding: 9px;
+    gap: 20px;
+    border: 1px solid #b1afaf;
+    padding-top: 20px;
+}
+
+.div2 span {
+    position: relative;
+    top: 75px;
+    font-size: 70px;
+
+
+}
+
+.div2 h2 {
+    padding-top: 20px;
+
+
+
+}
+
+.div3 {
+    width: 65%;
+    height: 570px;
+    /* background-color:#ccc; */
+    padding: 15px;
+    border: 1px solid #b1afaf;
+}
+
+.Products {
+    width: 100%;
+    height: 260px;
+    background-color: white;
+    color: black;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+}
+
+
+.Quantity {
+    width: 100%;
+    height: 260px;
+    background-color: #00001a;
+    color: white;
+    margin-top: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+}
+
+.flexborder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+
+.border {
+    width: 49%;
+    height: 60px;
+    background-color: rgb(212, 64, 64);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    padding: 19px;
+    color: white;
+}
+
+.Low p{
+   background-color: black;
+   color: white;
+   border-radius: 50%;
+   padding: 5px;
+}
+.border2 {
+    width: 49%;
+    height: 60px;
+    background-color: #0f990f;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    color: white;
+    padding: 9px;
+    /* padding: 5px; */
+}
+
+.border2 .Date {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.border2 {
+    width: 49%;
+    height: 60px;
+    background-color: #0f990f;
+
+
+}
+
+.cont {
+    width: 100%;
+    height: 85%;
+    background-color: white;
+    margin-top: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    /* padding: 50px; */
+
+}
+.cont form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: none; */
+}
+
+footer {
+    text-align: center;
+    color: #b1afaf;
+}
+
+/* Products */
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2px;
+}
+
+.table td,
+.table th {
+    /* text-align: center; */
+    font-size: 16px;
+    padding: 5px;
+}
+
+.table th {
+    /* background-color:;
+	color:#ffffff; */
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.Top {
+    display: flex;
+    justify-content: space-between;
+    padding: 9px;
+    margin-right: 20px;
+}
+
+input {
+    position: relative;
+    right: 8px;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid black;
+    width: 400px;
+    height: 20px;
+}
+
+.NewButton button {
+    width: 100px;
+    height: 35px;
+    margin-left: 27%;
+    padding: 1px;
+    background-color: #00001a;
+    color: white;
+    border: none;
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+.Section {
+    background-color: #f1f1f1;
+    border: 0.5px solid #ccc;
+    width: 96%;
+    padding: 9px;
+    text-align: left;
+    margin-right: 20px;
+    position: absolute;
+    top: 30%;
+    left: 25px;
+
+}
+.stockinp{
+    margin-left: 28px;
+    /* transform: translateY(-20px); */
+}
+
+section h2 {
+    position: relative;
+    top: 30px;
+    left: 30px;
+}
+
+.Delete {
+    padding: 4px;
+    background: rgb(231, 51, 51);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bolder;
+}
+
+.Edit {
+    padding: 4px;
+    width: 25%;
+    border: none;
+    background-color: rgb(20, 173, 20);
+    border-radius: 5px;
+    color: white;
+    font-weight: bolder;
+}
+
+
+.search .icon {
+    position: relative;
+    top: 3px;
+    right: 1px;
+}
+
+.search input {
+    padding: 15px;
+    padding-left: 30px;
+    transform: translateX(-25px);
+}
+
+.cont h2 {
+    margin-left: 10px;
+    padding-top: 12px;
+    padding-left: 12px;
+}
+.cont label{
+ margin-left: 20px;
+ font-size: 18px;
+}
+
+.calender {
+    position: relative;
+    top: 20px;
+    left: 35px;
+}
+
+.dayW ul {
+    display: flex;
+    /* font-size: 25px; */
+    /* font-weight: lighter; */
+    
+}
+
+.dayW li {
+    width: fit-content;
+    font-size: 24px;
+    color: #666363;
+}
+
+.dayButton {
+    display: grid;
+    grid-template-columns: repeat(7, 90px);
+    gap: 5px;
+}
+
+.dayButton button {
+    padding: 15px;
+    margin: 5px;
+    border: none;
+}
+
+.active {
+    background-color:#00001a;
+    color: white;
+}
+
+.deleteIcon{
+    width: 20px;
+}
+.editIcon{
+    width: 20px;
+}
+
+
+/* SignIn */
+.Container-Form{
+    display: flex;
+    justify-content: space-between;
+}
+.signIn{
+    width: 50%;
+    background-color: black;
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.signIn h2{
+    text-align: center;
+    margin-right: 90px;
+}
+.signIn button{
+    padding: 9px;
+    width: 62%;
+    /* border-radius: 9px; */
+}
+.signIn button:hover{
+    color: rebeccapurple;
+}
+
+.signUp{
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: normal;
+    position: relative;
+    left: 10%;
+    
+}
+.signUp input{
+    padding: 20px;
+}
+
+.signUp button{
+    padding: 9px;
+    width: 61%;
+    transform: translateX(-9px);
+    background-color: black;
+    border: none;
+    color: white;
+    border-radius: px;
+}
+.signUp button:hover{
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+}
+.createAccount{
+    display: none;
+}

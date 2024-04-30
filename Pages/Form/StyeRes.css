@@ -1,0 +1,66 @@
+@media (max-width:570px) {
+    .link,
+    .account{
+        display: none;
+    }
+    i{
+        display: flex;
+    }
+    .flex{
+        display: flex;
+        /* justify-content: center; */
+        flex-direction: column;
+        /* width: 100%; */
+    }
+    .div2,
+    .div3{
+        width: 100%;
+    }
+    .div2{
+        order: 2;
+    }
+    nav ul{
+        display: flex;
+        flex-direction: column;
+    }
+    nav ul li{
+        margin-top: 40px;
+        color: white;
+    }
+   
+
+    
+    nav .link{
+        display: flex;
+        width: 100%;
+        background-color: grey;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 50%;
+    }
+    .account{
+        display: flex;
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 50%; 
+        margin-left: 2px;
+    }
+    .account a{
+        position: fixed;
+        left: 25px;
+        top: 90%;
+    } 
+    
+    .signIn{
+        display: none;
+    }
+    .createAccount{
+        display: flex;
+    }
+}
+
+
+
