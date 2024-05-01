@@ -169,10 +169,11 @@ i {
 }
 
 .Low p{
-   background-color: black;
+   /* background-color: black; */
+   border: red;
    color: white;
    border-radius: 50%;
-   padding: 5px;
+   padding: 10px;
 }
 .border2 {
     width: 49%;
@@ -425,7 +426,7 @@ section h2 {
 
 .signUp button{
     padding: 9px;
-    width: 61%;
+    width: 50%;
     transform: translateX(-9px);
     background-color: black;
     border: none;

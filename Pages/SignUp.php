@@ -42,19 +42,20 @@
                     if (empty($confPassword)) {
                         $confPasswordErr = 'Confpassword Required';
                     } else {
-                        $confPassword = $confPassword;
+                        if($confPassword!==$passWord){
+                            $confPasswordErr='Password not match';
+                        }else{
+
+                            $confPassword = $confPassword;
+                        }
                     }
-                    if ($confPassword !== $password) {
-                        echo "Not mtch";
-                    } else {
-                        $confPassword;
-                    }
+                   
 
                     if ($usernameErr == "" && $passwordErr == "" && $confPasswordErr == "") {
-                        $sql = "INSERT INTO signup VALUES ('','$userName', '$password', '$confPassword')";
+                        $sql = "INSERT INTO users VALUES ('','$userName', '$password', '$confPassword')";
                         $run = mysqli_query($conn, $sql);
                         if ($run) {
-                            $message = 'User registered';
+                            $message = 'User Registered';
                         } else {
                             $message = 'User Not registered';
                         }
@@ -63,7 +64,7 @@
                     }
                 }
                 ?>
-                <h3>SignUp Stock Management</h3> <br> <br>
+                <h3>SIGNUP</h3> <br>
                 <?php echo $message ?>
                 <form action="" method="post">
                     <label for="" style="font-weight: bolder;">UserName</label><span style="color: red;">*</span><br>
@@ -84,7 +85,7 @@
             </div>
             <div class="signIn">
                 <h3>WELCOME TO STOCK MANAGEMENT</h3> <br>
-                <button> <a href="SignUp.html">SignUp</a></button>
+                <button> <a href="SignIn.php">SignIn</a></button>
                 </form>
             </div>
         </div>

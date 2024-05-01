@@ -1,3 +1,30 @@
+<?php
+include('./Pages/Connection.php');
+session_start();
+
+
+$sql = "SELECT * FROM `stockin_product`";
+$run = mysqli_query($conn, $sql);
+$rows = mysqli_num_rows($run);
+
+
+
+if ($rows >= 0 && $rows <= 5) {
+    $borderMess='Low Product';
+}elseif($rows >= 6 && $rows <= 15){
+    $borderMess='Enough Product';
+}else{
+    $borderMess='Very Enough Product';
+
+}
+
+
+$sql = "SELECT * FROM `stockout_product`";
+$run = mysqli_query($conn, $sql);
+$row = mysqli_num_rows($run);
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,18 +50,16 @@
                     <div class="link">
                         <ul>
                             <li><img src="./Resources/dashboard.png" alt="" class="icon"><a href="">DashBoard</a></li>
-                            <li><img src="./Resources/product.png" alt="" class="icon"><a
-                                    href="./Pages/Products.htm">Products</a></li>
-                            <li><img src="./Resources/out-of-stock.png" alt="" class="icon"><a
-                                    href="./Pages/StochOut.html">StochOut</a></li>
-                            <li><img src="./Resources/report.png" alt="" class="icon"><a
-                                    href="./Pages/Report.html">Report</a> </li>
+                            <li><img src="./Resources/product.png" alt="" class="icon"><a href="./Pages/Products.php">Products</a></li>
+                            <li><img src="./Resources/out-of-stock.png" alt="" class="icon"><a href="./Pages/StochOut.php">StochOut</a></li>
+                            <li><img src="./Resources/report.png" alt="" class="icon"><a href="./Pages/Report.php">Report</a> </li>
                         </ul>
                     </div>
                 </div>
                 <div class="account">
-                    <div>
-                        <a href="">LogOut</a>
+                    <div style="text-align: center;margin-right: 50px;">
+                        <h5><?php echo  $_SESSION["userName"] ?></h5>
+                        <a href="./Pages/Logout.php" style="font-size: small; margin-left: 8px;">LogOut</a>
                     </div>
                 </div>
                 <!-- <div class="bar">
@@ -47,30 +72,30 @@
                 <div class="div2">
                     <div class="Products">
                         <h2>TOTAL OF PRODACT</h2>
-                        <span>09</span>
+                        <span><?php echo $rows; ?></span>
                     </div>
                     <div class="Quantity">
-                        <h2>TOTAL QUANTITY</h2>
-                        <span>20</span>
+                        <h2>STOCK OUT PRODUCT</h2>
+                        <span><?php echo $row; ?></span>
                     </div>
                 </div>
                 <div class="div3">
                     <div class="flexborder">
                         <div class="border2">
                             <h3>TIME</h3>
-                            <h5 class="Date">13:39 p.m</h5>
+                            <h5 class="Date" id="time"></h5>
                         </div>
                         <div class="border">
                             <div>
-                                <h3>Low Product</h3>
+                                <h3><?php echo $borderMess?></h3>
                             </div>
                             <div class="Low">
-                                <p>0</p>
+                                <p><?php echo  $rows?></p>
                             </div>
                         </div>
                     </div>
                     <div class="cont">
-                    <h2>CALENDER</h2>
+                        <h2>CALENDER</h2>
                         <form action="#">
                             <div class="col-md-12">
                                 <div id="inline_cal"></div>
@@ -93,6 +118,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/rome.js"></script>
     <script src="js/main.js"></script>
+    <script src="./Functionality/js.js"></script>
 </body>
 
 </html>
