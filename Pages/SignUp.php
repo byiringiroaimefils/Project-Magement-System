@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../Style/style.css">
-    <link rel="stylesheet" href="../Style/StyeRes.css">
+    <link rel="stylesheet" href=".//Form//style.css">
+    <link rel="stylesheet" href="./Form//StyeRes.css">
 </head>
 
 <body>
@@ -81,11 +81,11 @@
 
                     <button name="SignUp">Sign Up</a></button><br><br>
                     <!-- <input type="submit"  name="SignUp"> -->
-                    <label for="" class="createAccount">Already have account<a href="SignUp.html"> SignIn</a></label><br> <br>
+                    <label for="" class="createAccount">Already have account<a href="SignUp.php"> SignIn</a></label><br> <br>
             </div>
             <div class="signIn">
                 <h3>WELCOME TO STOCK MANAGEMENT</h3> <br>
-                <button> <a href="SignIn.php">SignIn</a></button>
+                <button> <a href="/project%20magement%20system/index.php">SignIn</a></button>
                 </form>
             </div>
         </div>

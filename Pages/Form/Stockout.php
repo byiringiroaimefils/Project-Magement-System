@@ -12,7 +12,7 @@ if (isset($_POST['StockOut'])) {
 
 
     if ($run == true) {
-     header('Location:/project%20magement%20system/Pages/StockOut.html');
+        header('Location:/project%20magement%20system/Pages/StockOut.html');
     } else {
         echo 'Product Not Stock out';
     }
@@ -57,8 +57,10 @@ if (isset($_POST['StockOut'])) {
                     </div>
                 </div>
                 <div class="account">
-                  
-                    <a href="">LogOut</a>
+                    <div style="text-align: center;margin-right: 50px;">
+                        <h5><?php echo  $_SESSION["userName"] ?></h5>
+                        <a href="./Pages/Logout.php" style="font-size: small; margin-left: 8px;">LogOut</a>
+                    </div>
                 </div>
             </nav>
         </header> <br>

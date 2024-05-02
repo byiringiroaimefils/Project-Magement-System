@@ -88,8 +88,8 @@ $row = mysqli_num_rows($run);
                                     <td data-label="Marks%"><?php echo $row['price'] ?></td>
                                     <td data-label="Staus"><?php echo $row['total_price'] ?></td>
                                     <td data-label="Staus">
-                                        <button class="Delete"><a href="Edit.php ?id=<?php echo $row['product_id'] ?>"><img src="../Resources/delete.png" alt="" class="deleteIcon"></a></button>
-                                        <button class="Edit"><a href="Delete.php ?id=<?php echo $row['product_id'] ?>"><img src="../Resources/edit.png" alt="" class="editIcon"></a></button>
+                                        <button class="Delete"><a href="Edit.php ?id=<?php echo $row['product_id'] ?>"><img src="../Resources/edit.png" alt="" class="deleteIcon"></a></button>
+                                        <button class="Edit"><a href="Delete.php ?id=<?php echo $row['product_id'] ?>"><img src="../Resources/delete.png" alt="" class="editIcon"></a></button>
                                     </td>
 
                                 </tr>

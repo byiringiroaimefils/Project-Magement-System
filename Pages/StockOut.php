@@ -1,6 +1,6 @@
 <?php
 include('Connection.php');
-
+session_start();
 $sql = "SELECT * FROM `stockout_product`";
 $run = mysqli_query($conn, $sql);
 $row = mysqli_num_rows($run);
@@ -33,13 +33,15 @@ $row = mysqli_num_rows($run);
                             <li><img src="../Resources/dashboard.png" alt="" class="icon"><a href="../index.php">DashBoard</a></li>
                             <li><img src="../Resources/product.png" alt="" class="icon"><a href="../Pages/Products.php">Product</a></li>
                             <li><img src="../Resources//out-of-stock.png" alt="" class="icon"><a href="../Pages/StockOut.php">StochOut</a></li>
-                            <li><img src="../Resources/report.png" alt="" class="icon"><a href="../Pages/Report.html">Report</a> </li>
+                            <li><img src="../Resources/report.png" alt="" class="icon"><a href="../Pages/Report.php">Report</a> </li>
                         </ul>
                     </div>
                 </div>
                 <div class="account">
-                    <!-- <p class="accounth2">aimefils@gmail.com</p> -->
-                    <a href="">LogOut</a>
+                    <div style="text-align: center;margin-right: 50px;">
+                        <h5><?php echo  $_SESSION["userName"] ?></h5>
+                        <a href="./Pages/Logout.php" style="font-size: small; margin-left: 8px;">LogOut</a>
+                    </div>
                 </div>
             </nav>
         </header>
@@ -77,7 +79,7 @@ $row = mysqli_num_rows($run);
                                     <td><?php echo $row['product_name'] ?></td>
                                     <td><?php echo $row['product_date'] ?></td>
                                     <td><?php echo $row['product_Quantity'] ?></td>
-                                    
+
                                 </tr>
 
 

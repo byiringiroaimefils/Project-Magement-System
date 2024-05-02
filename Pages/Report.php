@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,19 +29,21 @@
                     </div>
                     <div class="link">
                         <ul>
-                            <li><img src="../Resources/dashboard.png" alt="" class="icon"><a href="">DashBoard</a></li>
+                            <li><img src="../Resources/dashboard.png" alt="" class="icon"><a href="../index.php">DashBoard</a></li>
                             <li><img src="../Resources/product.png" alt="" class="icon"><a
-                                    href="../Pages/Products.htm">Products</a></li>
+                                    href="../Pages/Products.php">Products</a></li>
                             <li><img src="../Resources/out-of-stock.png" alt="" class="icon"><a
-                                    href="../Pages/StochOut.html">StochOut</a></li>
+                                    href="../Pages/StockOut.php">StochOut</a></li>
                             <li><img src="../Resources/report.png" alt="" class="icon"><a
-                                    href="../Pages/Report.html">Report</a> </li>
+                                    href="../Pages/Report.php">Report</a> </li>
                         </ul>
                     </div>
                 </div>
                 <div class="account">
-                    <!-- <p class="accounth2">aimefils@gmail.com</p> -->
-                    <a href="">LogOut</a>
+                <div style="text-align: center;margin-right: 50px;">
+                        <h5><?php echo  $_SESSION["userName"] ?></h5>
+                        <a href="./Pages/Logout.php" style="font-size: small; margin-left: 8px;">LogOut</a>
+                    </div>
                 </div>
             </nav>
         </header>
