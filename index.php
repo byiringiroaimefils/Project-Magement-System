@@ -1,7 +1,7 @@
 <?php
+session_start();
 $conn =mysqli_connect("localhost","root","","saint_anne");
 
-session_start();
 
 if (isset($_POST['signin'])) {
     $mess = '';
@@ -20,8 +20,10 @@ if (isset($_POST['signin'])) {
         $_SESSION["password"] = $row["password"];
         header("Location:/project magement system/Pages/DashBoard.php");
         $mess = 'Email $ Password Correct!!';
+        echo"<script>alert('Email $ Password Correct!!')</script>";
     } else {
         $mess = 'UserName $ Password Incorrect!!';
+        echo"<script>alert('UserName $ Password Incorrect!!')</script>";
     }
 }
 

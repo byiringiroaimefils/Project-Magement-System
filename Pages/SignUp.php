@@ -42,22 +42,24 @@
                     if (empty($confPassword)) {
                         $confPasswordErr = 'Confpassword Required';
                     } else {
-                        if($confPassword!==$passWord){
-                            $confPasswordErr='Password not match';
-                        }else{
+                        if ($confPassword !== $passWord) {
+                            $confPasswordErr = 'Password not match';
+                        } else {
 
                             $confPassword = $confPassword;
                         }
                     }
-                   
+
 
                     if ($usernameErr == "" && $passwordErr == "" && $confPasswordErr == "") {
                         $sql = "INSERT INTO users VALUES ('','$userName', '$password', '$confPassword')";
                         $run = mysqli_query($conn, $sql);
                         if ($run) {
                             $message = 'User Registered';
+                            echo "<script>alert('User Registered')</script>";
                         } else {
                             $message = 'User Not registered';
+                            echo "<script>alert('User Not registered')</script>";
                         }
                     } else {
                         // echo "error";
@@ -65,7 +67,7 @@
                 }
                 ?>
                 <h3>SIGNUP</h3> <br>
-                <?php echo $message ?>
+                <!-- <?php echo $message ?> -->
                 <form action="" method="post">
                     <label for="" style="font-weight: bolder;">UserName</label><span style="color: red;">*</span><br>
                     <input type="text" id="" placeholder="John Doe" name="username"><br>

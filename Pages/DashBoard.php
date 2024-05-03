@@ -3,6 +3,13 @@ include('Connection.php');
 session_start();
 
 
+
+if (!isset($_SESSION["userName"]) || empty($_SESSION["userName"])) {
+    header("Location:/project%20magement%20system/index.php");
+    exit();
+}
+
+
 $sql = "SELECT * FROM `stockin_product`";
 $run = mysqli_query($conn, $sql);
 $rows = mysqli_num_rows($run);

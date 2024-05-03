@@ -49,7 +49,7 @@ $row = mysqli_num_rows($run);
             </nav>
         </header> <br>
         <div class="Stockin">
-            <button class="backbotton"> <a href="../Products.htm">Back</a> </button>
+            <button class="backbotton"> <a href="../Pages//Products.php">Back</a> </button>
             <section>
 
                 <?php
@@ -102,9 +102,13 @@ if (isset($_POST["Update"])) {
 
 
     if ($run == true) {
-       header("Locatio:");
+        echo"<script>alert('Product Updated ✔')</script>";
+        header("Location:/project%20magement%20system/Pages/Products.php");
+    
+
     } else {
-        echo 'not done';
+        echo"<script>alert('Product Not Updated ')<script/>";
+        // echo 'not done';
     }
 }
 

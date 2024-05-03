@@ -50,10 +50,10 @@ if (isset($_POST['StockIn'])) {
                     </div>
                     <div class="link">
                         <ul>
-                            <li><img src="/Resources/dashboard.png" alt="dashboard icon" class="icon"><a href="/index.html">DashBoard</a></li>
-                            <li><img src="/Resources/product.png" alt=" product icon" class="icon"><a href="/Pages/Products.htm">Products</a></li>
-                            <li><img src="/Resources/outstock (1).png" alt=" outstock icon" class="icon"><a href="/Pages/StochOut.html">StochOut</a></li>
-                            <li><img src="/Resources/report.png" alt="report icon" class="icon"><a href="/Pages/Report.html">Report</a> </li>
+                            <li><img src="/Resources/dashboard.png" alt="dashboard icon" class="icon"><a href="../DashBoard.php">DashBoard</a></li>
+                            <li><img src="/Resources/product.png" alt=" product icon" class="icon"><a href="/Pages/Products.php">Products</a></li>
+                            <li><img src="/Resources/outstock (1).png" alt=" outstock icon" class="icon"><a href="/Pages/StochOut.php">StochOut</a></li>
+                            <li><img src="/Resources/report.png" alt="report icon" class="icon"><a href="/Pages/Report.php">Report</a> </li>
                         </ul>
                     </div>
                 </div>

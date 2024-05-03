@@ -33,10 +33,10 @@ $row = mysqli_num_rows($run);
                     </div>
                     <div class="link">
                         <ul>
-                            <li><img src="../Resources/dashboard.png" alt="" class="icon"><a href="../index.php">DashBoard</a></li>
+                            <li><img src="../Resources/dashboard.png" alt="" class="icon"><a href="./DashBoard.php">DashBoard</a></li>
                             <li><img src="../Resources/product.png" alt="" class="icon"><a href="Products.php">Products</a></li>
                             <li><img src="../Resources/out-of-stock.png" alt="" class="icon"><a href="Stockout.php">StochOut</a></li>
-                            <li><img src="../Resources/report.png" alt="" class="icon"><a href="Report.html">Report</a> </li>
+                            <li><img src="../Resources/report.png" alt="" class="icon"><a href="Report.php">Report</a> </li>
                         </ul>
                     </div>
                 </div>

@@ -12,7 +12,7 @@ if (isset($_POST['StockOut'])) {
 
 
     if ($run == true) {
-        header('Location:/project%20magement%20system/Pages/StockOut.html');
+        header('Location:/project%20magement%20system/Pages/StockOut.php');
     } else {
         echo 'Product Not Stock out';
     }
@@ -49,17 +49,17 @@ if (isset($_POST['StockOut'])) {
                     </div>
                     <div class="link">
                         <ul>
-                            <li><img src="/Resources/dashboard.png" alt="" class="icon"><a href="/index.html">DashBoard</a></li>
-                            <li><img src="/Resources/product.png" alt="" class="icon"><a href="/Pages/Products.htm">Products</a></li>
-                            <li><img src="/Resources/out-of-stock.png" alt="" class="icon"><a href="/Pages/StochOut.html">StochOut</a></li>
-                            <li><img src="/Resources/report.png" alt="" class="icon"><a href="/Pages/Report.html">Report</a> </li>
+                            <li><img src="/Resources/dashboard.png" alt="" class="icon"><a href="../DashBoard.php">DashBoard</a></li>
+                            <li><img src="/Resources/product.png" alt="" class="icon"><a href="/Pages/Products.php">Products</a></li>
+                            <li><img src="/Resources/out-of-stock.png" alt="" class="icon"><a href="/Pages/StochOut.php">StochOut</a></li>
+                            <li><img src="/Resources/report.png" alt="" class="icon"><a href="/Pages/Report.php">Report</a> </li>
                         </ul>
                     </div>
                 </div>
                 <div class="account">
                     <div style="text-align: center;margin-right: 50px;">
                         <h5><?php echo  $_SESSION["userName"] ?></h5>
-                        <a href="./Pages/Logout.php" style="font-size: small; margin-left: 8px;">LogOut</a>
+                        <a href="../Logout.php" style="font-size: small; margin-left: 8px;">LogOut</a>
                     </div>
                 </div>
             </nav>
