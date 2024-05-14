@@ -25,7 +25,7 @@ header {
     }
 }
 .logos h2{
-    color: #00001a;
+    color:  rgb(7, 7, 66);
     transform: translateY(1px);
 }
 nav {
@@ -53,7 +53,7 @@ ul li a {
 
 ul li a:hover {
     /* text-decoration: none; */
-    color: black;
+    color:  rgb(7, 7, 66);
     transition: .5s ease-in-out;
     /* font-weight: bolder; */
 }
@@ -150,7 +150,7 @@ i {
 .Quantity {
     width: 100%;
     height: 260px;
-    background-color: #00001a;
+    background-color: rgb(7, 7, 66);
     color: white;
     margin-top: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -178,7 +178,7 @@ i {
 }
 
 .Low p{
-   background-color: black;
+   background-color: #00001a;
    border: red;
    color: white;
    border-radius: 50%;
@@ -274,23 +274,25 @@ input {
     height: 35px;
     margin-left: 27%;
     padding: 1px;
-    background-color: #00001a;
+    background-color:  rgb(7, 7, 66);
     color: white;
     border: none;
     font-weight: bold;
-    border-radius: 2px;
+    border-radius: 5px;
 }
 
 .Section {
     background-color: #f1f1f1;
     border: 0.5px solid #ccc;
-    width: 96%;
+    width: 95%;
     padding: 9px;
     text-align: left;
-    margin-right: 20px;
+    /* margin-right: 20px; */
+    margin-left: 10px;
     position: absolute;
     top: 30%;
     left: 25px;
+    /* overflow:scroll; */
 
 }
 .stockinp{
@@ -363,7 +365,7 @@ section h2 {
 .dayW li {
     width: fit-content;
     font-size: 24px;
-    color: #666363;
+    color: rgb(7, 7, 66);
 }
 
 .dayButton {
@@ -379,7 +381,7 @@ section h2 {
 }
 
 .active {
-    background-color:#00001a;
+    background-color:rgb(7, 7, 66);
     color: white;
 }
 
@@ -449,5 +451,33 @@ section h2 {
     border: 2px solid black;
 }
 .createAccount{
+    display: none;
+}
+
+.user{
+    background-color: rgb(7, 7, 66);
+    width: 20%;
+    position: absolute;
+    left: 78%;
+    padding: 10px;
+    display: none;
+    z-index: -2px;
+}
+.user h4{
+    color: white;
+  font-size: small;
+  font-weight: bolder;
+  /* text-align: center; */
+}
+.user p{
+  font-size: small;
+  font-weight: bolder;
+  text-align: center;
+}
+.togglo{
+    display: block;
+}
+
+#Hidden{
     display: none;
 }

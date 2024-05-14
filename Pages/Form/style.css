@@ -279,7 +279,7 @@ input {
     text-align: left;
     margin-right: 20px;
     position: absolute;
-    top: 30%;
+    top: 25%;
     left: 25px;
 
 }
@@ -437,5 +437,32 @@ section h2 {
     border: 2px solid black;
 }
 .createAccount{
+    display: none;
+}
+user{
+    background-color: rgb(7, 7, 66);
+    width: 20%;
+    position: absolute;
+    left: 78%;
+    padding: 10px;
+    display: none;
+    z-index: -2px;
+}
+.user h4{
+    color: white;
+  font-size: small;
+  font-weight: bolder;
+  /* text-align: center; */
+}
+.user p{
+  font-size: small;
+  font-weight: bolder;
+  text-align: center;
+}
+.togglo{
+    display: block;
+}
+
+#Hidden{
     display: none;
 }

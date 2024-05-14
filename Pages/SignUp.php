@@ -79,11 +79,10 @@
 
                     <label for="" style="font-weight: bolder;">Confirm Password</label><span style="color: red;">*</span><br>
                     <input type="password" placeholder="Confirm Password" name="Confpassword"><br>
-                    <span style="color: red;"><?php echo $confPasswordErr ?></span><br><br>
+                    <span style="color: red;"><?php echo $confPasswordErr ?></span><br>
 
-                    <button name="SignUp">Sign Up</a></button><br><br>
-                    <!-- <input type="submit"  name="SignUp"> -->
-                    <label for="" class="createAccount">Already have account<a href="SignUp.php"> SignIn</a></label><br> <br>
+                    <button name="SignUp"  style="width: 25%;" >Sign Up</a></button><br><br>
+                    <label for="" class="createAccount">Already have account<a href="/project%20magement%20system/index.php">  SignIn</a></label><br> <br>
             </div>
             <div class="signIn">
                 <h3>WELCOME TO STOCK MANAGEMENT</h3> <br>

@@ -1,5 +1,5 @@
 <?php
-include('Connection.php');
+ include('Connection.php');
 session_start();
 
 
@@ -40,10 +40,22 @@ $row = mysqli_num_rows($run);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../Style//style.css">
-    <link rel="stylesheet" href="./Style//StyeRes.css">
+    <link rel="stylesheet" href="../Style//StyeRes.css">
 
     <link rel="stylesheet" href="../css//rome.css">
     <link rel="stylesheet" href="../css//style.css">
+    <style>
+        .account h5{
+            background: #00001a;
+            color: white;
+            padding: 9px;
+            width: 50%;
+            border-radius: 50%;
+            margin-left: 12px;
+            font-weight: bolder;
+            text-transform: uppercase;
+        }
+    </style>
 </head>
 
 <body>
@@ -52,29 +64,32 @@ $row = mysqli_num_rows($run);
             <nav>
                 <div class="logo">
                     <div class="logos">
-                        <h2>Stock Management</h2>
+                        <h2 style="color:  rgb(7, 7, 66);">Stock Management</h2>
                     </div>
-                    <div class="link">
+                    <div class="link" id="link">
+                        <button onclick="corss()"  id="Hidden">Cross</button>
                         <ul>
                             <li><img src="../Resources//dashboard.png" alt="" class="icon"><a href=".//DashBoard.php">DashBoard</a></li>
                             <li><img src="../Resources//product.png" alt="" class="icon"><a href="./Products.php">Products</a></li>
+                            <li><img src="../Resources//product.png" alt="" class="icon"><a href="./stockIn.php">stockIn</a></li>
                             <li><img src="../Resources//out-of-stock.png" alt="" class="icon"><a href="./StockOut.php">StochOut</a></li>
                             <li><img src="../Resources//report.png" alt="" class="icon"><a href="./Report.php">Report</a> </li>
                         </ul>
                     </div>
                 </div>
-                <div class="account">
-                    <div style="text-align: center;margin-right: 50px;">
-                        <h5><?php echo  $_SESSION["userName"] ?></h5>
-                        <a href="./Logout.php" style="font-size: small; margin-left: 8px;">LogOut</a>
-                    </div>
+                <div style="display: flex;">
+                <img src="../Resources//user.png" alt="" onclick="userFunction()" style="width: 35px; margin-right: 9px; cursor: pointer;">
+                <img src="../Resources//hamburger-menu.png" alt="" onclick="Bar()" id="Hidden" style="width: 35px; cursor: pointer;">
                 </div>
-                <!-- <div class="bar">
-                    <button>LogOut</button>
-                </div> -->
+           
             </nav>
         </header>
-        <div class="body">
+        <div class="user" id="user">
+            <h4><?php echo  $_SESSION["userName"]?></h4>
+            <p> <a href="./Logout.php" >LogOut</a></p>
+
+        </div>
+        <div class="body"> 
             <div class="flex">
                 <div class="div2">
                     <div class="Products">
@@ -97,7 +112,7 @@ $row = mysqli_num_rows($run);
                                 <h3><?php echo $borderMess?></h3>
                             </div>
                             <div class="Low">
-                                <p><?php echo  $rows?></p>
+                                <p style="padding:0px 9px 2px 9px;"><?php echo  $rows?></p>
                             </div>
                         </div>
                     </div>

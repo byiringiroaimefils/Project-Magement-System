@@ -6,10 +6,14 @@ if (!isset($_SESSION["userName"]) || empty($_SESSION["userName"])) {
     exit();
 }
 
-$sql = "SELECT * FROM `product`";
+if (isset($_GET['Search'])) {
+
+$filter = mysqli_real_escape_string($conn, $_GET['Search']);
+
+$sql = "SELECT * FROM `stockin_product`  WHERE CONCAT(product_name) LIKE '%$filter%'";
 $run = mysqli_query($conn, $sql);
 $row = mysqli_num_rows($run);
-
+}
 ?>
 
 
@@ -50,7 +54,7 @@ $row = mysqli_num_rows($run);
                         <button onclick="corss()" id="Hidden">Cross</button>
                         <ul>
                             <li><img src="../Resources/dashboard.png" alt="" class="icon"><a href="./DashBoard.php">DashBoard</a></li>
-                            <li><img src="../Resources/product.png" alt="" class="icon"><a href="./Products.php">Product</a></li>
+                            <li><img src="../Resources/product.png" alt="" class="icon"><a href="./Products.php">Products</a></li>
                             <li><img src="../Resources/product.png" alt="" class="icon"><a href="./stockIn.php">StockIn</a></li>
                             <li><img src="../Resources/out-of-stock.png" alt="" class="icon"><a href="Stockout.php">StochOut</a></li>
                             <li><img src="../Resources/report.png" alt="" class="icon"><a href="Report.php">Report</a> </li>
@@ -74,29 +78,35 @@ $row = mysqli_num_rows($run);
             </nav>
         </header>
         <div class="user" id="user">
-            <h4><?php echo  $_SESSION["userName"]?></h4>
-            <p> <a href="./Logout.php" >LogOut</a></p>
+            <h4><?php echo  $_SESSION["userName"] ?></h4>
+            <p> <a href="./Logout.php">LogOut</a></p>
 
         </div>
         <section>
-            <h2>Add New Products </h2><br><br>
+            <h2>Stock In Products </h2><br><br>
             <p class="stockinp" style="color: rgb(7, 7, 66);">Here is where you are going to add new product.</p>
             <div class="Section">
                 <div class="Top">
                     <div class="search">
-                        <!-- <img src="../Resources/search.png" alt="" class="icon">
-                        <input type="text" placeholder="Search..."> -->
+                        <form action="" method="get">
+                            <img src="../Resources/search.png" alt="" class="icon">
+                            <input type="text" placeholder="Search..." name="Search">
+                            <button>Search</button>
+                        </form>
                     </div>
-                    <div class="NewButton">
-                        <button><a href="./Form/product_form.php" style="text-decoration: none; color: white; border-radius: 9px;">New Product</a></button>
-                    </div>
+                    <!-- <div class="NewButton">
+                        <button><a href="./Form/StockIn.php" style="text-decoration: none; color: white; border-radius: 9px;">Add New</a></button>
+                    </div> -->
                 </div> <br>
                 <table class="table">
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>NAME OF PRODUCT</th>
-                          
+                            <th>QUANTITY</th>
+                            <th>PRICE</th>
+                            <th>TOTAL PRICE</th>
+                            <th>DATE</th>
                             <!-- <th>ACTION</th> -->
                         </tr>
                     </thead>
@@ -110,19 +120,17 @@ $row = mysqli_num_rows($run);
 
                                     <td data-label="S.No"><?php echo $row['product_id'] ?></td>
                                     <td data-label="Name"><?php echo $row['product_name'] ?></td>
-                                    <!-- <td data-label="Age"><?php echo $row['product_date'] ?></td> -->
-                                    <td data-label="Staus">
-                                        <button class="Edit" style="background-color: black;"><a style="color: white; text-decoration: none;" href="./Form/StockInForm.php ?id=<?php echo $row['product_id'] ?>">StockIn</button>
-                                        <button class="Edit"><a style="color: white; text-decoration: none;" href="Edit.php ?id=<?php echo $row['product_id'] ?>">Edit</button>
-                                        <button class="Edit" style="background-color: red;"><a style="color: white; text-decoration: none;" href="Delete.php ?id=<?php echo $row['product_id'] ?>">Delete</button>
-                                    <!-- <td data-label="Marks%"><?php echo $row['product_Quantity'] ?></td>
+                                    <td data-label="Marks%"><?php echo $row['product_Quantity'] ?></td>
                                     <td data-label="Marks%"><?php echo $row['price'] ?></td>
                                     <td data-label="Staus"><?php echo $row['total_price'] ?></td>
-                                    -->
+                                    <td data-label="Age"><?php echo $row['product_date'] ?></td>
+
 
                                 </tr>
                         <?php
                             }
+                        }else{
+                            // echo " <script>alert('No products found matching the search criteria')</script>";
                         }
                         ?>
 

@@ -44,7 +44,7 @@ if (isset($_POST['signin'])) {
         <div class="Container-Form">
             <div class="signIn">
                 <h2>Welcome To Stock Management</h2><br><br><br>
-                <button><a href="./Pages//SignUp.php">SignUp</a></button>
+                <button><a href="./Pages//SignUp.php" style="color: black; text-decoration: none;">SignUp</a></button>
             </div>
             <div class="signUp">
                 <h1>SIGN IN</h1> <br>
@@ -52,8 +52,8 @@ if (isset($_POST['signin'])) {
                 <form action="#" method="post">
                     <input type="text" id="" placeholder="John Doe" name="username" required> <br><br>
                     <input type="password" placeholder="password" name="password" required><br><br>
-                    <button name="signin">Sign In</button><br><br>
-                    <label for="" class="createAccount">Create Account<a href="SIgnIn.php">SignUp</a></label>
+                    <button name="signin" style="width: 25%;">Sign In</button><br><br>
+                    <label for="" class="createAccount">Create Account<a href="./Pages//SignUp.php">SignUp</a></label>
                 </form>
             </div>
         </div>
