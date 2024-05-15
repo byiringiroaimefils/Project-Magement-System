@@ -6,6 +6,11 @@ if (!isset($_SESSION["userName"]) || empty($_SESSION["userName"])) {
     exit();
 }
 
+$id = $_GET["id"];
+$sql_product = "SELECT * FROM product WHERE productId='$id'";
+$run_product = mysqli_query($conn, $sql_product);
+$row_product = mysqli_fetch_assoc($run_product);
+
 
 
 
@@ -13,12 +18,11 @@ if (isset($_POST['StockIn'])) {
     $productName = $_POST['product'];
     $productQuantity = $_POST['Quantity'];
     $productprice = $_POST['price'];
-    // $productTotal_price = $_POST['Total_price'];
     $productTotal_price = $productQuantity * $productprice;
 
-    $sqli = "INSERT INTO stockin_product VALUES ('','$productName',NOW(),'$productQuantity','$productprice','$productTotal_price')";
+    $sqli = "INSERT INTO stockin VALUES ('',(SELECT ProductId FROM product WHERE ProductName = '$productName'),'$productQuantity',NOW(),'$productprice','$productTotal_price')";
     $run = mysqli_query($conn, $sqli);
-    // $row = mysqli_fetch_array($run);
+
 
 
     if ($run == true) {
@@ -27,12 +31,6 @@ if (isset($_POST['StockIn'])) {
         echo 'Product Not Stock In';
     }
 }
-$id = $_GET["id"];
-
-
-$sql_product = "SELECT product_name FROM product WHERE product_id='$id'";
-$run_product = mysqli_query($conn, $sql_product);
-$row_product = mysqli_fetch_assoc($run_product);
 
 
 ?>
@@ -87,14 +85,6 @@ $row_product = mysqli_fetch_assoc($run_product);
                     <img src="../Resources//user.png" alt="" onclick="userFunction()" style="width: 35px; margin-right: 9px; cursor: pointer;">
                     <img src="../Resources//hamburger-menu.png" alt="" onclick="Bar()" id="Hidden" style="width: 35px; cursor: pointer;">
                 </div>
-                <!-- <div class="account">
-                    <div style="text-align: center;margin-right: 50px; display: flex; gap: 2px;">
-                    <h5><?php echo substr($_SESSION["userName"], 0, 1) ?></h5>
-                    <button style=" margin-left: 8px ; border: none; background-color: transparent;">
-                        <a href="../Logout.php">LogOut</a>
-                    </button>
-                    </div>
-                </div> -->
             </nav>
         </header>
         <div class="user" id="user">
@@ -107,7 +97,7 @@ $row_product = mysqli_fetch_assoc($run_product);
             <section>
                 <form action="#" method="post" style="margin-bottom: 15%;">
                     <label for="" style="font-weight: bold;">Name </label> <br><br>
-                    <input type="text" placeholder="Name of product" name="product" value="<?php echo  $row_product['product_name'] ?>" required><br><br>
+                    <input type="text" placeholder="Name of product" name="product" value="<?php echo  $row_product['ProductName'] ?>" required><br><br>
 
                     <label for="" style="font-weight: bold;">Quntity</label><br><br>
                     <input type="text" placeholder="Kilograms" name="Quantity" required><br><br>

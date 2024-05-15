@@ -34,7 +34,7 @@ if (isset($_POST['signin'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>saint_Anne</title>
     <link rel="stylesheet" href="Style//style.css">
     <link rel="stylesheet" href="Style//StyeRes.css">
 </head>
@@ -48,7 +48,6 @@ if (isset($_POST['signin'])) {
             </div>
             <div class="signUp">
                 <h1>SIGN IN</h1> <br>
-                <!-- <span style="color: red; font-weight: bolder;"><?php echo $mess ?></span><br> -->
                 <form action="#" method="post">
                     <input type="text" id="" placeholder="John Doe" name="username" required> <br><br>
                     <input type="password" placeholder="password" name="password" required><br><br>

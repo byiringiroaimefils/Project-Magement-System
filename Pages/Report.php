@@ -7,11 +7,24 @@ if (!isset($_SESSION["userName"]) || empty($_SESSION["userName"])) {
 }
 
 
-$sql = "SELECT * FROM `stockin_product`";
+$sql = "SELECT 
+    Product.ProductId,
+    Product.ProductName,
+    Stockin.ProductQuantity AS StockInQuantity,
+    Stockin.ProductDate AS StockInDate,
+    Stockin.Price,
+    Stockin.TotalPrice  AS TotalPrice,
+    Stockout.ProductQuantity AS StockOutQuantity,
+    Stockout.ProductDate AS StockOutDate
+
+ FROM product 
+INNER JOIN Stockin  ON Stockin.ProductId = Product.ProductId
+INNER JOIN Stockout  ON Stockout.ProductId = Product.ProductId";
+
 $run = mysqli_query($conn, $sql);
 $row = mysqli_num_rows($run);
 
-$sql_out = "SELECT * FROM `stockout_product`";
+$sql_out = "SELECT * FROM `stockout`";
 $run_out = mysqli_query($conn, $sql_out);
 $row_out = mysqli_num_rows($run_out);
 
@@ -24,7 +37,7 @@ $row_out = mysqli_num_rows($run_out);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>saint_Anne</title>
     <link rel="stylesheet" href="../Style/style.css">
     <link rel="stylesheet" href="../Style/StyeRes.css">
     <script src="../Functionality/js.js" defer></script>
@@ -81,7 +94,7 @@ $row_out = mysqli_num_rows($run_out);
 
                     </div>
                     <div class="link" id="link">
-                    <button onclick="corss()"  id="Hidden">Cross</button>
+                        <button onclick="corss()" id="Hidden">Cross</button>
 
                         <ul>
                             <li><img src="../Resources/dashboard.png" alt="" class="icon"><a href="./DashBoard.php">DashBoard</a></li>
@@ -142,6 +155,8 @@ $row_out = mysqli_num_rows($run_out);
                             <th>QUANTITY</th>
                             <th>PRICE</th>
                             <th>TOTAL PRICE</th>
+                            <th>D.OUT</th>
+                            <th>Qua.OUT</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -152,12 +167,14 @@ $row_out = mysqli_num_rows($run_out);
                         ?>
                                 <tr>
 
-                                    <td data-label="S.No"><?php echo $row['product_id'] ?></td>
-                                    <td data-label="Name"><?php echo $row['product_name'] ?></td>
-                                    <td data-label="Age"><?php echo $row['product_date'] ?></td>
-                                    <td data-label="Marks%"><?php echo $row['product_Quantity'] ?></td>
-                                    <td data-label="Marks%"><?php echo $row['price'] ?></td>
-                                    <td data-label="Staus"><?php echo $row['total_price'] ?></td>
+                                    <td data-label="S.No"><?php echo $row['ProductId'] ?></td>
+                                    <td data-label="Name"><?php echo $row['ProductName'] ?></td>
+                                    <td data-label="Age"><?php echo $row['StockInDate'] ?></td>
+                                    <td data-label="Marks%"><?php echo $row['StockInQuantity'] ?></td>
+                                    <td data-label="Marks%"><?php echo $row['Price'] ?></td>
+                                    <td data-label="Staus"><?php echo $row['TotalPrice'] ?></td>
+                                    <td data-label="Age"><?php echo $row['StockOutDate'] ?></td>
+                                    <td data-label="Marks%"><?php echo $row['StockOutQuantity'] ?></td>
                                 </tr>
 
                         <?php
@@ -173,7 +190,7 @@ $row_out = mysqli_num_rows($run_out);
             </div>
         </section>
 
-        <div>
+        <!-- <div>
             <div style="position: absolute; top: 70%;left: 2%;">
                 <h2>Total Product in Stock </h2>
                 <p>Here is where you are going to add new product.</p> <br><br><br>
@@ -199,10 +216,10 @@ $row_out = mysqli_num_rows($run_out);
 
 
                                     <tr>
-                                        <td><?php echo $row_out['product_id'] ?></td>
-                                        <td><?php echo $row_out['product_name'] ?></td>
-                                        <td><?php echo $row_out['product_date'] ?></td>
-                                        <td><?php echo $row_out['product_Quantity'] ?></td>
+                                        <td><?php echo $row_out['producId'] ?></td>
+                                        <td><?php echo $row_out['productName'] ?></td>
+                                        <td><?php echo $row_out['productDate'] ?></td>
+                                        <td><?php echo $row_out['productQuantity'] ?></td>
                                         <td>Admin</td>
 
                                     </tr>
@@ -215,7 +232,7 @@ $row_out = mysqli_num_rows($run_out);
                         </tbody>
                     </table>
                 </div>
-        </div>
+        </div> -->
         </section>
 
     </div>

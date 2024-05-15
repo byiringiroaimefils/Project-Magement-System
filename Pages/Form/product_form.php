@@ -16,7 +16,7 @@ if (isset($_POST['StockIn'])) {
     $run = mysqli_query($conn, $sqli);
 
     if ($run == true) {
-        header('Location:/project%20magement%20system/Pages/Product.php');
+        header('Location:/project%20magement%20system/Pages/Products.php');
     } else {
         echo 'Product Not Stock In';
     }

@@ -6,14 +6,15 @@ if (!isset($_SESSION["userName"]) || empty($_SESSION["userName"])) {
     exit();
 }
 
-if (isset($_GET['Search'])) {
+// if (isset($_GET['Search'])) {
 
-$filter = mysqli_real_escape_string($conn, $_GET['Search']);
+// $filter = mysqli_real_escape_string($conn, $_GET['Search']);
 
-$sql = "SELECT * FROM `stockin_product`  WHERE CONCAT(product_name) LIKE '%$filter%'";
+$sql = "SELECT * FROM  Product  
+INNER JOIN StockIn  ON StockIn.ProductId = Product.ProductId";
 $run = mysqli_query($conn, $sql);
 $row = mysqli_num_rows($run);
-}
+// }
 ?>
 
 
@@ -24,7 +25,7 @@ $row = mysqli_num_rows($run);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>saint_Anne</title>
     <link rel="stylesheet" href="../Style/style.css">
     <link rel="stylesheet" href="../Style/StyeRes.css">
     <script src="../Functionality/js.js" defer></script>
@@ -64,7 +65,7 @@ $row = mysqli_num_rows($run);
 
                 <div style="display: flex;">
                     <img src="../Resources//user.png" alt="" onclick="userFunction()" style="width: 35px; margin-right: 9px; cursor: pointer;">
-                    <img src="../Resources//hamburger-menu.png" alt="" onclick="Bar()" id="Hidden" style="width: 35px; cursor: pointer;">
+                    <!-- <img src="../Resources//hamburger-menu.png" alt="" onclick="Bar()" id="Hidden" style="width: 35px; cursor: pointer;"> -->
                 </div>
 
                 <!-- <div class="account">
@@ -91,7 +92,7 @@ $row = mysqli_num_rows($run);
                         <form action="" method="get">
                             <img src="../Resources/search.png" alt="" class="icon">
                             <input type="text" placeholder="Search..." name="Search">
-                            <button>Search</button>
+                            <!-- <button>Search</button> -->
                         </form>
                     </div>
                     <!-- <div class="NewButton">
@@ -118,18 +119,23 @@ $row = mysqli_num_rows($run);
                         ?>
                                 <tr>
 
-                                    <td data-label="S.No"><?php echo $row['product_id'] ?></td>
-                                    <td data-label="Name"><?php echo $row['product_name'] ?></td>
-                                    <td data-label="Marks%"><?php echo $row['product_Quantity'] ?></td>
-                                    <td data-label="Marks%"><?php echo $row['price'] ?></td>
-                                    <td data-label="Staus"><?php echo $row['total_price'] ?></td>
-                                    <td data-label="Age"><?php echo $row['product_date'] ?></td>
+                                    <td data-label="S.No"><?php echo $row['StockInId'] ?></td>
+                                    <td data-label="Name"><?php echo $row['ProductName'] ?></td>
+                                    <td data-label="Marks%"><?php echo $row['ProductQuantity'] ?></td>
+                                    <td data-label="Marks%"><?php echo $row['Price'] ?></td>
+                                    <td data-label="Staus"><?php echo $row['TotalPrice'] ?></td>
+                                    <td data-label="Age"><?php echo $row['ProductDate'] ?></td>
+                                    <td data-label="Age">
+                                        <button class="Edit" style="background-color: red;"><a style="color: white; text-decoration: none;" href="Action/DeleteSin.php ?id=<?php echo $row['StockInId'] ?>">Delete</button>
+                                        <button class="Edit"><a style="color: white; text-decoration: none;" href="Action/EditSin.php ?id=<?php echo $row['StockInId'] ?>">Edit</button>
+
+                                    </td>
 
 
                                 </tr>
                         <?php
                             }
-                        }else{
+                        } else {
                             // echo " <script>alert('No products found matching the search criteria')</script>";
                         }
                         ?>

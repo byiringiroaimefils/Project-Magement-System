@@ -10,9 +10,9 @@ if (isset($_POST['StockOut'])) {
     $productName = $_POST['product'];
     $productQuantity = $_POST['Quantity'];
 
-    $sqli = "INSERT INTO stockout_product VALUES ('','$productName',NOW(),'$productQuantity')";
+    $sqli = "INSERT INTO stockout VALUES ('',(SELECT ProductId FROM Product WHERE ProductName = '$productName'),'$productQuantity',NOW())";
     $run = mysqli_query($conn, $sqli);
-    // $row = mysqli_fetch_array($run);
+
 
 
     if ($run == true) {

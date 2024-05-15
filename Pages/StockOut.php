@@ -7,14 +7,15 @@ if (!isset($_SESSION["userName"]) || empty($_SESSION["userName"])) {
     exit();
 }
 
-if (isset($_GET['Search'])) {
-    // $filter = $_GET['Search'];
-    $filter = mysqli_real_escape_string($conn, $_GET['Search']);
+// if (isset($_GET['Search'])) {
+// $filter = $_GET['Search'];
+// $filter = mysqli_real_escape_string($conn, $_GET['Search']);
 
-    $sql = "SELECT * FROM `stockout_product` WHERE CONCAT(product_name) LIKE '%$filter%'";
-    $run = mysqli_query($conn, $sql);
-    $row = mysqli_num_rows($run);
-}
+$sql = "SELECT * FROM  Product  
+INNER JOIN Stockout  ON Stockout.ProductId = Product.ProductId";
+$run = mysqli_query($conn, $sql);
+$row = mysqli_num_rows($run);
+// }
 
 
 ?>
@@ -26,7 +27,7 @@ if (isset($_GET['Search'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>saint_Anne</title>
     <link rel="stylesheet" href="../Style/style.css">
     <link rel="stylesheet" href="../Style/StyeRes.css">
     <script src="../Functionality/js.js" defer></script>
@@ -95,7 +96,7 @@ if (isset($_GET['Search'])) {
 
                             <img src="../Resources/search.png" alt="" class="icon">
                             <input type="text" placeholder="Search..." name="Search">
-                            <button>Search</button>
+                            <!-- <button>Search</button> -->
                         </form>
                     </div>
                     <div class="NewButton">
@@ -119,17 +120,22 @@ if (isset($_GET['Search'])) {
 
 
                                 <tr>
-                                    <td><?php echo $row['product_id'] ?></td>
-                                    <td><?php echo $row['product_name'] ?></td>
-                                    <td><?php echo $row['product_date'] ?></td>
-                                    <td><?php echo $row['product_Quantity'] ?></td>
+                                    <td><?php echo $row['StockOutId'] ?></td>
+                                    <td><?php echo $row['ProductName'] ?></td>
+                                    <td><?php echo $row['ProductDate'] ?></td>
+                                    <td><?php echo $row['ProductQuantity'] ?></td>
+                                    <td>
+                                        <button class="Edit" style="background-color: red;"><a style="color: white; text-decoration: none;" href="Action/DeleteSout.php ?id=<?php echo $row['StockOutId'] ?>">Delete</button>
+                                        <!-- <button class="Edit"><a style="color: white; text-decoration: none;" href="Pages/Action/EditSout.php ?id=<?php echo $row['ProductId'] ?>">Edit</button> -->
+
+                                    </td>
 
                                 </tr>
 
 
                         <?php
                             }
-                        } else{
+                        } else {
                             // echo " <script>alert('No products found matching the search criteria')</script>";
                         }
                         ?>

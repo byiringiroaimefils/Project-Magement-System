@@ -10,15 +10,15 @@ if (!isset($_SESSION["userName"]) || empty($_SESSION["userName"])) {
 }
 
 
-$sql = "SELECT * FROM `stockin_product`";
+$sql = "SELECT * FROM `product`";
 $run = mysqli_query($conn, $sql);
-$rows = mysqli_num_rows($run);
+$product = mysqli_num_rows($run);
 
 
 
-if ($rows >= 0 && $rows <= 5) {
+if ($product >= 0 && $product <= 5) {
     $borderMess='Low Product';
-}elseif($rows >= 6 && $rows <= 15){
+}elseif($product >= 6 && $product <= 15){
     $borderMess='Enough Product';
 }else{
     $borderMess='Very Enough Product';
@@ -26,9 +26,14 @@ if ($rows >= 0 && $rows <= 5) {
 }
 
 
-$sql = "SELECT * FROM `stockout_product`";
+$sql = "SELECT * FROM `stockout`";
 $run = mysqli_query($conn, $sql);
-$row = mysqli_num_rows($run);
+$rowout = mysqli_num_rows($run);
+
+
+$sql = "SELECT * FROM `stockin`";
+$run = mysqli_query($conn, $sql);
+$rowin = mysqli_num_rows($run);
 
 
 ?>
@@ -38,7 +43,7 @@ $row = mysqli_num_rows($run);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>saint_Anne</title>
     <link rel="stylesheet" href="../Style//style.css">
     <link rel="stylesheet" href="../Style//StyeRes.css">
 
@@ -93,12 +98,12 @@ $row = mysqli_num_rows($run);
             <div class="flex">
                 <div class="div2">
                     <div class="Products">
-                        <h2>TOTAL PRODACT</h2>
-                        <span><?php echo $rows; ?></span>
+                        <h2>STOCK IN PRODUCT</h2>
+                        <span><?php echo $rowin; ?></span>
                     </div>
                     <div class="Quantity">
                         <h2>STOCK OUT PRODUCT</h2>
-                        <span><?php echo $row; ?></span>
+                        <span><?php echo $rowout; ?></span>
                     </div>
                 </div>
                 <div class="div3">
@@ -112,7 +117,7 @@ $row = mysqli_num_rows($run);
                                 <h3><?php echo $borderMess?></h3>
                             </div>
                             <div class="Low">
-                                <p style="padding:0px 9px 2px 9px;"><?php echo  $rows?></p>
+                                <p style="padding:0px 9px 2px 9px;"><?php echo  $product?></p>
                             </div>
                         </div>
                     </div>

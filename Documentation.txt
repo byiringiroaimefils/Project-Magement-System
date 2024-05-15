@@ -1,4 +1,7 @@
-Homepge: 1.The totk number of products nd totl untity of ll products
+
+          
+
+DashBoard: 1.The totakt  number of products and total untity of all products
          2.Date time.
          3.Low stock.
          3.List Product Inserted in the system.

@@ -20,7 +20,7 @@ $row = mysqli_num_rows($run);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>saint_Anne</title>
     <link rel="stylesheet" href="../Style/style.css">
     <link rel="stylesheet" href="../Style/StyeRes.css">
     <script src="../Functionality/js.js" defer></script>
@@ -108,13 +108,13 @@ $row = mysqli_num_rows($run);
                         ?>
                                 <tr>
 
-                                    <td data-label="S.No"><?php echo $row['product_id'] ?></td>
-                                    <td data-label="Name"><?php echo $row['product_name'] ?></td>
-                                    <!-- <td data-label="Age"><?php echo $row['product_date'] ?></td> -->
+                                    <td data-label="S.No"><?php echo $row['ProductId'] ?></td>
+                                    <td data-label="Name"><?php echo $row['ProductName'] ?></td>
+                                    <!-- <td data-label="Age"><?php echo $row['ProductDate'] ?></td> -->
                                     <td data-label="Staus">
-                                        <button class="Edit" style="background-color: black;"><a style="color: white; text-decoration: none;" href="./Form/StockInForm.php ?id=<?php echo $row['product_id'] ?>">StockIn</button>
-                                        <button class="Edit"><a style="color: white; text-decoration: none;" href="Edit.php ?id=<?php echo $row['product_id'] ?>">Edit</button>
-                                        <button class="Edit" style="background-color: red;"><a style="color: white; text-decoration: none;" href="Delete.php ?id=<?php echo $row['product_id'] ?>">Delete</button>
+                                        <button class="Edit" style="background-color: black;"><a style="color: white; text-decoration: none;" href="./Form/StockInForm.php ?id=<?php echo $row['ProductId'] ?>">StockIn</button>
+                                        <button class="Edit"><a style="color: white; text-decoration: none;" href="Edit.php ?id=<?php echo $row['ProductId'] ?>">Edit</button>
+                                        <button class="Edit" style="background-color: red;"><a style="color: white; text-decoration: none;" href="Delete.php ?id=<?php echo $row['ProductId'] ?>">Delete</button>
                                     <!-- <td data-label="Marks%"><?php echo $row['product_Quantity'] ?></td>
                                     <td data-label="Marks%"><?php echo $row['price'] ?></td>
                                     <td data-label="Staus"><?php echo $row['total_price'] ?></td>
@@ -132,9 +132,9 @@ $row = mysqli_num_rows($run);
             </div>
         </section>
     </div>
-    <!-- <footer>
+    <footer>
             &copy;2024 Stock Magement
-        </footer> -->
+        </footer>
 </body>
 
 </html>
