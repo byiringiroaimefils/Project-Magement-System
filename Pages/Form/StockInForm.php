@@ -26,7 +26,7 @@ if (isset($_POST['StockIn'])) {
 
 
     if ($run == true) {
-        header('Location:/project%20magement%20system/Pages/Product.php');
+        header('Location:/project%20magement%20system/Pages/Products.php');
     } else {
         echo 'Product Not Stock In';
     }
@@ -74,10 +74,10 @@ if (isset($_POST['StockIn'])) {
                         <button onclick="corss()" id="Hidden">Cross</button>
                         <ul>
                             <li><img src="/Resources//dashboard.png" class="icon"><a href="../DashBoard.php">DashBoard</a></li>
-                            <li><img src="/Resources/./product.png" alt="" class="icon"><a href="../Products.php">Products</a></li>
-                            <li><img src="/Resources//product.png" alt="" class="icon"><a href="../stockIn.php">StockIn</a></li>
-                            <li><img src="/Resources//outstock (1).png" class="icon"><a href="/Pages/StochOut.php">StochOut</a></li>
-                            <li><img src="/Resources//report.png" class="icon"><a href="/Pages/Report.php">Report</a> </li>
+                            <li><img src="/Resources/./product.png"  class="icon"><a href="../Products.php">Products</a></li>
+                            <li><img src="/Resources//product.png"  class="icon"><a href="../stockIn.php">StockIn</a></li>
+                            <li><img src="/Resources//outstock (1).png" class="icon"><a href="../StockOut.php">StochOut</a></li>
+                            <li><img src="/Resources//report.png" class="icon"><a href="../Report.php">Report</a> </li>
                         </ul>
                     </div>
                 </div>

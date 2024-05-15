@@ -75,7 +75,7 @@ $row = mysqli_num_rows($run);
 
         </div><br>
         <div class="Stockin">
-            <button class="backbotton"> <a href="../Pages//Products.php">Back</a> </button>
+            <button class="backbotton"> <a href="/project%20magement%20system/Pages/Stockin.php">Back</a> </button>
             <section>
 
                 <?php

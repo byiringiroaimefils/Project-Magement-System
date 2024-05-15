@@ -132,9 +132,12 @@ $row = mysqli_num_rows($run);
             </div>
         </section>
     </div>
-    <footer>
+    <div style="position: absolute; top: 92%; left:50%; transform: translate(-50%,-50%);">
+        <footer>
             &copy;2024 Stock Magement
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
         </footer>
+    </div>
 </body>
 
 </html>

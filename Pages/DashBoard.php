@@ -69,7 +69,7 @@ $rowin = mysqli_num_rows($run);
             <nav>
                 <div class="logo">
                     <div class="logos">
-                        <h2 style="color:  rgb(7, 7, 66);">Stock Management</h2>
+                        <h2 style="color:  rgb(7, 7, 66);">Saint  Anne</h2>
                     </div>
                     <div class="link" id="link">
                         <button onclick="corss()"  id="Hidden">Cross</button>
@@ -134,7 +134,7 @@ $rowin = mysqli_num_rows($run);
 
             </div>
         </div>
-        <footer>
+        <footer >
             &copy;2024 Stock Magement
         </footer>
     </div>

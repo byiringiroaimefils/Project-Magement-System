@@ -155,8 +155,8 @@ $row_out = mysqli_num_rows($run_out);
                             <th>QUANTITY</th>
                             <th>PRICE</th>
                             <th>TOTAL PRICE</th>
-                            <th>D.OUT</th>
-                            <th>Qua.OUT</th>
+                            <th>Date.OUT</th>
+                            <th>Quantity.OUT</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -236,9 +236,12 @@ $row_out = mysqli_num_rows($run_out);
         </section>
 
     </div>
-    <!-- <footer>
-        &copy;2024 Stock Magement
-    </footer> -->
+    <div style="position: absolute; top: 92%; left:50%; transform: translate(-50%,-50%);">
+        <footer>
+            &copy;2024 Stock Magement
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
+        </footer>
+    </div>
     </div>
     <script>
         function button() {

@@ -6,8 +6,7 @@ $sqli = "DELETE FROM stockout WHERE StockOutId='$id'";
 $run=mysqli_query($conn,$sqli);
 
 if( $run == true){
-//    header("Location:/Pages/Stockout.php");/
-echo'done';
+   header("Location:/project%20magement%20system/Pages/Stockout.php");
 }else{
    echo"<script>PRODUCT NOT DELETED</script>";
 }

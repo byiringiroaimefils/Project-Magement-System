@@ -6,7 +6,7 @@ $sqli = "DELETE FROM stockin WHERE StockInId='$id'";
 $run=mysqli_query($conn,$sqli);
 
 if( $run == true){
-   header("Location:/Pages/Stockin.php");
+   header("Location:/project%20magement%20system/Pages/Stockin.php");
 }else{
    echo"<script>PRODUCT NOT DELETED</script>";
 }

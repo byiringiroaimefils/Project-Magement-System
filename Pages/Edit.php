@@ -57,8 +57,8 @@ $row = mysqli_num_rows($run);
                             <li><img src="../Resources/dashboard.png"  class="icon"><a href="/index.html">DashBoard</a></li>
                             <li><img src="../Resources/product.png" style="width: 20px;" ><a href="./Products.php">Product</a></li>
                             <li><img src="../Resources/product.png" style="width: 20px;"><a href="./stockIn.php">StockIn</a></li>
-                            <li><img src="../Resources/outstock (1).png" class="icon"><a href="/Pages/StochOut.html">StochOut</a></li>
-                            <li><img src="../Resources/report.png" class="icon"><a href="/Pages/Report.html">Report</a> </li>
+                            <li><img src="../Resources/outstock (1).png" class="icon"><a href="./Stockout.php">StochOut</a></li>
+                            <li><img src="../Resources/report.png" class="icon"><a href="./Report.php">Report</a> </li>
                         </ul>
                     </div>
                 </div>
