@@ -23,7 +23,9 @@ $row = mysqli_num_rows($run);
     <title>saint_Anne</title>
     <link rel="stylesheet" href="../Style/style.css">
     <link rel="stylesheet" href="../Style/StyeRes.css">
-    <script src="../Functionality/js.js" defer></script>
+    <!-- <script src="../Functionality/js.js" defer></script> -->
+    <script src="../js/Functionality/js.js" defer></script>
+
     <style>
         .account h5 {
             background: black;
@@ -44,7 +46,8 @@ $row = mysqli_num_rows($run);
             <nav>
                 <div class="logo">
                     <div class="logos">
-                        <h2>Stock Management</h2>
+                    <h2 style="color:  rgb(7, 7, 66);">Saint  Anne</h2>
+                        
                     </div>
                     <div class="link" id="link">
                         <button onclick="corss()" id="Hidden">Cross</button>
@@ -112,9 +115,9 @@ $row = mysqli_num_rows($run);
                                     <td data-label="Name"><?php echo $row['ProductName'] ?></td>
                                     <!-- <td data-label="Age"><?php echo $row['ProductDate'] ?></td> -->
                                     <td data-label="Staus">
-                                        <button class="Edit" style="background-color: black;"><a style="color: white; text-decoration: none;" href="./Form/StockInForm.php ?id=<?php echo $row['ProductId'] ?>">StockIn</button>
-                                        <button class="Edit"><a style="color: white; text-decoration: none;" href="Edit.php ?id=<?php echo $row['ProductId'] ?>">Edit</button>
-                                        <button class="Edit" style="background-color: red;"><a style="color: white; text-decoration: none;" href="Delete.php ?id=<?php echo $row['ProductId'] ?>">Delete</button>
+                                        <button class="Edit" style="background-color: black;"><a style="color: white; text-decoration: none;" href="./Form/StockInForm.php ?id=<?php echo $row['ProductId'] ?>">StockIn + </button>
+                                        <button class="Edit"><a style="color: white; text-decoration: none;" href="Edit.php ?id=<?php echo $row['ProductId'] ?>"><img src="../Resources/edit.png" alt="" style="width: 15px;"></button>
+                                        <button class="Edit" style="background-color: red;"><a style="color: white; text-decoration: none;" href="Delete.php ?id=<?php echo $row['ProductId'] ?>"><img src="../Resources/delete.png" alt="" style="width: 15px;"></button>
                                     <!-- <td data-label="Marks%"><?php echo $row['product_Quantity'] ?></td>
                                     <td data-label="Marks%"><?php echo $row['price'] ?></td>
                                     <td data-label="Staus"><?php echo $row['total_price'] ?></td>
@@ -135,7 +138,9 @@ $row = mysqli_num_rows($run);
     <div style="position: absolute; top: 92%; left:50%; transform: translate(-50%,-50%);">
         <footer>
             &copy;2024 Stock Magement
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
+            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
+            <p>Ecole Primaire Sainte Anne</p>
+
         </footer>
     </div>
 </body>

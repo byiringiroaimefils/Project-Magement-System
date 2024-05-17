@@ -47,8 +47,8 @@ $rowin = mysqli_num_rows($run);
     <link rel="stylesheet" href="../Style//style.css">
     <link rel="stylesheet" href="../Style//StyeRes.css">
 
-    <link rel="stylesheet" href="../css//rome.css">
-    <link rel="stylesheet" href="../css//style.css">
+    <link rel="stylesheet" href="../Style/css/style.css">
+    <link rel="stylesheet" href="../Style/css/rome.css">
     <style>
         .account h5{
             background: #00001a;
@@ -145,7 +145,7 @@ $rowin = mysqli_num_rows($run);
     <script src="../js//bootstrap.min.js"></script>
     <script src="../js//rome.js"></script>
     <script src="../js//main.js"></script>
-    <script src="../Functionality//js.js"></script>
+    <script src="../js/Functionality/js.js"></script>
 </body>
 
 </html>

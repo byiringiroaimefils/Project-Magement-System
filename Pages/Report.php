@@ -7,7 +7,7 @@ if (!isset($_SESSION["userName"]) || empty($_SESSION["userName"])) {
 }
 
 
-$sql = "SELECT 
+$sql = "SELECT  *,
     Product.ProductId,
     Product.ProductName,
     Stockin.ProductQuantity AS StockInQuantity,
@@ -24,9 +24,9 @@ INNER JOIN Stockout  ON Stockout.ProductId = Product.ProductId";
 $run = mysqli_query($conn, $sql);
 $row = mysqli_num_rows($run);
 
-$sql_out = "SELECT * FROM `stockout`";
-$run_out = mysqli_query($conn, $sql_out);
-$row_out = mysqli_num_rows($run_out);
+// $productname=$row['ProductName'];
+// $Remain_Product=$row['StockInQuantity']-$row['StockOutQuantity'];
+// $update=mysqli_query($conn,"UPDATE stockin SET ProductQuantity='$Remain_Product' WHERE ProductName='$productname'");
 
 ?>
 
@@ -40,7 +40,9 @@ $row_out = mysqli_num_rows($run_out);
     <title>saint_Anne</title>
     <link rel="stylesheet" href="../Style/style.css">
     <link rel="stylesheet" href="../Style/StyeRes.css">
-    <script src="../Functionality/js.js" defer></script>
+    <!-- <script src="../Functionality/js.js" defer></script> -->
+    <script src="../js/Functionality/js.js" defer></script>
+
     <style>
         .section {
             background-color: #f1f1f1;
@@ -90,7 +92,7 @@ $row_out = mysqli_num_rows($run_out);
             <nav>
                 <div class="logo">
                     <div class="logos">
-                        <h2>Stock Management</h2>
+                        <h2>Saint  Anne</h2>
 
                     </div>
                     <div class="link" id="link">
@@ -109,14 +111,6 @@ $row_out = mysqli_num_rows($run_out);
                     <img src="../Resources//user.png" alt="" onclick="userFunction()" style="width: 35px; margin-right: 9px; cursor: pointer;">
                     <img src="../Resources//hamburger-menu.png" alt="" onclick="Bar()" id="Hidden" style="width: 35px; cursor: pointer;">
                 </div>
-                <!-- <div class="account">
-                    <div style="text-align: center;margin-right: 50px; display: flex; gap: 2px;">
-                        <h5><?php echo substr($_SESSION["userName"], 0, 1) ?></h5>
-                        <button style=" margin-left: 8px ; border: none; background-color: transparent;">
-                            <a href="./Logout.php">LogOut</a>
-                        </button>
-                    </div>
-                </div> -->
             </nav>
         </header>
 
@@ -150,13 +144,13 @@ $row_out = mysqli_num_rows($run_out);
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>NAME OF PRODUCT</th>
+                            <th>Name of Product</th>
                             <th>Date</th>
-                            <th>QUANTITY</th>
-                            <th>PRICE</th>
-                            <th>TOTAL PRICE</th>
-                            <th>Date.OUT</th>
-                            <th>Quantity.OUT</th>
+                            <th>Quantuty</th>
+                            <th>Price</th>
+                            <th>Total Price</th>
+                            <th>DateOUT</th>
+                            <th>QuantityOUT</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -170,7 +164,7 @@ $row_out = mysqli_num_rows($run_out);
                                     <td data-label="S.No"><?php echo $row['ProductId'] ?></td>
                                     <td data-label="Name"><?php echo $row['ProductName'] ?></td>
                                     <td data-label="Age"><?php echo $row['StockInDate'] ?></td>
-                                    <td data-label="Marks%"><?php echo $row['StockInQuantity'] ?></td>
+                                    <td data-label="Marks%"><?php echo $row['StockInQuantity']?></td>
                                     <td data-label="Marks%"><?php echo $row['Price'] ?></td>
                                     <td data-label="Staus"><?php echo $row['TotalPrice'] ?></td>
                                     <td data-label="Age"><?php echo $row['StockOutDate'] ?></td>
@@ -239,7 +233,8 @@ $row_out = mysqli_num_rows($run_out);
     <div style="position: absolute; top: 92%; left:50%; transform: translate(-50%,-50%);">
         <footer>
             &copy;2024 Stock Magement
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
+            <p>Ecole Primaire Sainte Anne</p>
+
         </footer>
     </div>
     </div>

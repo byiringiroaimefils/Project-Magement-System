@@ -64,7 +64,7 @@ if (isset($_POST['StockIn'])) {
 <body>
     <div class="heder">
 
-        <header>
+        <!-- <header>
             <nav>
                 <div class="logo">
                     <div class="logos">
@@ -91,8 +91,8 @@ if (isset($_POST['StockIn'])) {
             <h4><?php echo  $_SESSION["userName"] ?></h4>
             <p> <a href="./Logout.php">LogOut</a></p>
 
-        </div><br>
-        <div class="Stockin">
+        </div><br> -->
+        <div class="Stockin" style="margin-top: 50px;">
             <button class="backbotton"> <a href="../Products.php">Back</a> </button>
             <section>
                 <form action="#" method="post" style="margin-bottom: 15%;">

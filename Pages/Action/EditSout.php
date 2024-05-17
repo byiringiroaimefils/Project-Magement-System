@@ -29,6 +29,9 @@ $row = mysqli_num_rows($run);
     <script src="../Functionality//js.js" defer></script>
 
     <style>
+          body{
+            overflow: hidden;
+        }
         .account h5 {
             background: black;
             color: white;
@@ -45,7 +48,7 @@ $row = mysqli_num_rows($run);
 <body>
     <div class="heder">
 
-        <header>
+        <!-- <header>
             <nav>
                 <div class="logo">
                     <div class="logos">
@@ -68,13 +71,13 @@ $row = mysqli_num_rows($run);
                     <img src="../Resources//hamburger-menu.png" alt="" onclick="Bar()" id="Hidden" style="width: 35px; cursor: pointer;">
                 </div>
             </nav>
-        </header>
-        <div class="user" id="user">
+        </header> -->
+        <!-- <div class="user" id="user">
             <h4><?php echo  $_SESSION["userName"] ?></h4>
             <p> <a href="./Logout.php">LogOut</a></p>
 
-        </div><br>
-        <div class="Stockin">
+        </div><br> -->
+        <div class="Stockin" style="margin-top: 50px;">
             <button class="backbotton"> <a href="../Pages//Products.php">Back</a> </button>
             <section>
 

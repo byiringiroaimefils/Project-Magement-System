@@ -29,6 +29,9 @@ $row = mysqli_num_rows($run);
     <script src="../Functionality//js.js" defer></script>
 
     <style>
+          body{
+            overflow: hidden;
+        }
         .account h5 {
             background: black;
             color: white;
@@ -44,7 +47,7 @@ $row = mysqli_num_rows($run);
 
 <body>
     <div class="heder">
-
+<!-- 
         <header>
             <nav>
                 <div class="logo">
@@ -73,8 +76,8 @@ $row = mysqli_num_rows($run);
             <h4><?php echo  $_SESSION["userName"] ?></h4>
             <p> <a href="./Logout.php">LogOut</a></p>
 
-        </div><br>
-        <div class="Stockin">
+        </div><br> -->
+        <div class="Stockin" style="margin-top: 50px;">
             <button class="backbotton"> <a href="/project%20magement%20system/Pages/Stockin.php">Back</a> </button>
             <section>
 

@@ -53,7 +53,7 @@ if (isset($_POST['StockIn'])) {
 <body>
     <div class="heder">
 
-        <header>
+        <!-- <header>
             <nav>
                 <div class="logo">
                     <div class="logos">
@@ -72,7 +72,7 @@ if (isset($_POST['StockIn'])) {
                 <div style="display: flex;">
                     <img src="../Resources//user.png" alt="" onclick="userFunction()" style="width: 35px; margin-right: 9px; cursor: pointer;">
                     <img src="../Resources//hamburger-menu.png" alt="" onclick="Bar()" id="Hidden" style="width: 35px; cursor: pointer;">
-                </div>
+                </div> -->
 
                 <!-- <div class="account">
                     <div style="text-align: center;margin-right: 50px; display: flex; gap: 2px;">
@@ -83,13 +83,13 @@ if (isset($_POST['StockIn'])) {
                     </div>
                 </div> -->
             </nav>
-        </header>
+        <!-- </header>
         <div class="user" id="user">
             <h4><?php echo  $_SESSION["userName"] ?></h4>
             <p> <a href="./Logout.php">LogOut</a></p>
 
-        </div><br>
-        <div class="Stockin">
+        </div><br> -->
+        <div class="Stockin" style="margin-top: 50px;">
             <button class="backbotton"> <a href="../Products.php">Back</a> </button>
             <section>
                 <form action="#" method="post" style="margin-bottom: 15%;">
