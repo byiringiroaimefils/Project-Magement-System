@@ -107,11 +107,12 @@ $row = mysqli_num_rows($run);
                         <?php
 
                         if ($row > 0) {
+                            $number=1;
                             while ($row = mysqli_fetch_assoc($run)) {
                         ?>
                                 <tr>
 
-                                    <td data-label="S.No"><?php echo $row['ProductId'] ?></td>
+                                    <td data-label="S.No"><?php echo $number ?></td>
                                     <td data-label="Name"><?php echo $row['ProductName'] ?></td>
                                     <!-- <td data-label="Age"><?php echo $row['ProductDate'] ?></td> -->
                                     <td data-label="Staus">
@@ -125,6 +126,7 @@ $row = mysqli_num_rows($run);
 
                                 </tr>
                         <?php
+                        $number++;
                             }
                         }
                         ?>

@@ -150,18 +150,19 @@ $update=mysqli_query($conn,"UPDATE stockin SET ProductQuantity='$Remain_Product'
                             <th>Total Price</th>
                             <th>DateOUT</th>
                             <th>QuantityOUT</th>
-                            <th>Tot Stock</th>
+                            <th>Total Stock</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
 
                         if ($row > 0) {
+                            $number=1;
                             while ($row = mysqli_fetch_assoc($run)) {
                         ?>
                                 <tr>
 
-                                    <td data-label="S.No"><?php echo $row['ProductId'] ?></td>
+                                    <td data-label="S.No"><?php echo $number ?></td>
                                     <td data-label="Name"><?php echo $row['ProductName'] ?></td>
                                     <td data-label="Age"><?php echo $row['StockInDate'] ?></td>
                                     <td data-label="Marks%"><?php echo $Rem= $row['StockInQuantity']-$row['StockOutQuantity']?></td>
@@ -173,6 +174,7 @@ $update=mysqli_query($conn,"UPDATE stockin SET ProductQuantity='$Remain_Product'
                                 </tr>
 
                         <?php
+                            $number++;
                             }
                         }
                         ?>

@@ -121,11 +121,12 @@ INNER JOIN StockOut  ON StockOut.ProductId = Product.ProductId";
                         <?php
 
                         if ($row > 0) {
+                            $number=1;
                             while ($row = mysqli_fetch_assoc($run)) {
                         ?>
                                 <tr>
 
-                                    <td data-label="S.No"><?php echo $row['StockInId'] ?></td>
+                                    <td data-label="S.No"><?php echo $number ?></td>
                                     <td data-label="Name"><?php echo $row['ProductName'] ?></td>
                                     <td data-label="Marks%"><?php echo $row['ProductQuantity']?></td>
                                     <td data-label="Marks%"><?php echo $row['Price'] ?></td>
@@ -140,6 +141,7 @@ INNER JOIN StockOut  ON StockOut.ProductId = Product.ProductId";
 
                                 </tr>
                         <?php
+                        $number++;
                             }
                         } else {
                             // echo " <script>alert('No products found matching the search criteria')</script>";

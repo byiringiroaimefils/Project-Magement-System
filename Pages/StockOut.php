@@ -106,12 +106,13 @@ $row = mysqli_num_rows($run);
                     <tbody>
                         <?php
                         if ($row > 0) {
+                            $number=1;
                             while ($row = mysqli_fetch_assoc($run)) {
                         ?>
 
 
                                 <tr>
-                                    <td><?php echo $row['StockOutId'] ?></td>
+                                    <td><?php echo $number?></td>
                                     <td><?php echo $row['ProductName'] ?></td>
                                     <td><?php echo $row['ProductDate'] ?></td>
                                     <td><?php echo $row['ProductQuantity'] ?></td>
@@ -125,6 +126,7 @@ $row = mysqli_num_rows($run);
 
 
                         <?php
+                          $number++;
                             }
                         } else {
                             // echo " <script>alert('No products found matching the search criteria')</script>";
