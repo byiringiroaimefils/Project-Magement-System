@@ -22,11 +22,11 @@ INNER JOIN Stockin  ON Stockin.ProductId = Product.ProductId
 INNER JOIN Stockout  ON Stockout.ProductId = Product.ProductId";
 
 $run = mysqli_query($conn, $sql);
-$row = mysqli_num_rows($run);
+$row = mysqli_fetch_assoc($run);
 
-// $productname=$row['ProductName'];
-// $Remain_Product=$row['StockInQuantity']-$row['StockOutQuantity'];
-// $update=mysqli_query($conn,"UPDATE stockin SET ProductQuantity='$Remain_Product' WHERE ProductName='$productname'");
+$productname=$row['ProductName'];
+$Remain_Product=$row['StockInQuantity']-$row['StockOutQuantity'];
+$update=mysqli_query($conn,"UPDATE stockin SET ProductQuantity='$Remain_Product' WHERE ProductName='$productname'");
 
 ?>
 
@@ -40,7 +40,6 @@ $row = mysqli_num_rows($run);
     <title>saint_Anne</title>
     <link rel="stylesheet" href="../Style/style.css">
     <link rel="stylesheet" href="../Style/StyeRes.css">
-    <!-- <script src="../Functionality/js.js" defer></script> -->
     <script src="../js/Functionality/js.js" defer></script>
 
     <style>
@@ -151,6 +150,7 @@ $row = mysqli_num_rows($run);
                             <th>Total Price</th>
                             <th>DateOUT</th>
                             <th>QuantityOUT</th>
+                            <th>Tot Stock</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -164,11 +164,12 @@ $row = mysqli_num_rows($run);
                                     <td data-label="S.No"><?php echo $row['ProductId'] ?></td>
                                     <td data-label="Name"><?php echo $row['ProductName'] ?></td>
                                     <td data-label="Age"><?php echo $row['StockInDate'] ?></td>
-                                    <td data-label="Marks%"><?php echo $row['StockInQuantity']?></td>
+                                    <td data-label="Marks%"><?php echo $Rem= $row['StockInQuantity']-$row['StockOutQuantity']?></td>
                                     <td data-label="Marks%"><?php echo $row['Price'] ?></td>
                                     <td data-label="Staus"><?php echo $row['TotalPrice'] ?></td>
                                     <td data-label="Age"><?php echo $row['StockOutDate'] ?></td>
                                     <td data-label="Marks%"><?php echo $row['StockOutQuantity'] ?></td>
+                                    <td data-label="Marks%"><?php echo $Rem + $row['StockOutQuantity']?></td>
                                 </tr>
 
                         <?php
