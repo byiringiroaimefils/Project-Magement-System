@@ -6,7 +6,7 @@ $sqli = "DELETE  FROM product WHERE ProductId='$id'";
 $run=mysqli_query($conn,$sqli);
 
 if( $run == true){
-   header("Location:/project%20magement%20system/Pages/Products.php");
+   header("Location:/Project-Magement-System/Pages/Products.php");
 }else{
    echo"<script>PRODUCT NOT DELETED</script>";
 }

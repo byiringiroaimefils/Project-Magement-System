@@ -5,7 +5,7 @@ session_start();
 
 
 if (!isset($_SESSION["userName"]) || empty($_SESSION["userName"])) {
-    header("Location:/project%20magement%20system/index.php");
+    header("Location:/Project-Magement-System/index.php");
     exit();
 }
 
@@ -98,18 +98,18 @@ $rowin = mysqli_num_rows($run);
             <div class="flex">
                 <div class="div2">
                     <div class="Products">
-                        <h2>STOCK IN PRODUCT</h2>
+                        <h2>STOCK IN PRODUCTS</h2>
                         <span><?php echo $rowin; ?></span>
                     </div>
                     <div class="Quantity">
-                        <h2>STOCK OUT PRODUCT</h2>
+                        <h2>STOCK OUT PRODUCTS</h2>
                         <span><?php echo $rowout; ?></span>
                     </div>
                 </div>
                 <div class="div3">
                     <div class="flexborder">
                         <div class="border2">
-                            <h3>TIME</h3>
+                            <h3>CURRENT TIME</h3>
                             <h5 class="Date" id="time"></h5>
                         </div>
                         <div class="border">
@@ -117,7 +117,7 @@ $rowin = mysqli_num_rows($run);
                                 <h3><?php echo $borderMess?></h3>
                             </div>
                             <div class="Low">
-                                <p style="padding:0px 9px 2px 9px;"><?php echo  $product?></p>
+                                <p><?php echo $product?></p>
                             </div>
                         </div>
                     </div>

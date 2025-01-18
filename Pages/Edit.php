@@ -3,7 +3,7 @@ include('Connection.php');
 session_start();
 
 if (!isset($_SESSION["userName"]) || empty($_SESSION["userName"])) {
-    header("Location:/project%20magement%20system/index.php");
+    header("Location:/Project-Magement-System/index.php");
     exit();
 }
 $id = $_GET["id"];

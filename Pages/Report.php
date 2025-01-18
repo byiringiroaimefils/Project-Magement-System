@@ -6,27 +6,37 @@ if (!isset($_SESSION["userName"]) || empty($_SESSION["userName"])) {
     exit();
 }
 
-
-$sql = "SELECT  *,
+$sql = "SELECT  
     Product.ProductId,
     Product.ProductName,
     Stockin.ProductQuantity AS StockInQuantity,
     Stockin.ProductDate AS StockInDate,
     Stockin.Price,
-    Stockin.TotalPrice  AS TotalPrice,
+    Stockin.TotalPrice AS TotalPrice,
     Stockout.ProductQuantity AS StockOutQuantity,
     Stockout.ProductDate AS StockOutDate
-
- FROM product 
-INNER JOIN Stockin  ON Stockin.ProductId = Product.ProductId
-INNER JOIN Stockout  ON Stockout.ProductId = Product.ProductId";
+FROM product 
+INNER JOIN Stockin ON Stockin.ProductId = Product.ProductId
+INNER JOIN Stockout ON Stockout.ProductId = Product.ProductId";
 
 $run = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($run);
 
-$productname=$row['ProductName'];
-$Remain_Product=$row['StockInQuantity']-$row['StockOutQuantity'];
-$update=mysqli_query($conn,"UPDATE stockin SET ProductQuantity='$Remain_Product' WHERE ProductName='$productname'");
+// Check if query returned any results before processing
+if (mysqli_num_rows($run) > 0) {
+    $row = mysqli_fetch_assoc($run);
+    
+    $productname = $row['ProductName'];
+    $Remain_Product = $row['StockInQuantity'] - $row['StockOutQuantity'];
+    
+    // Update query
+    $update = mysqli_query($conn, "UPDATE stockin SET ProductQuantity='$Remain_Product' WHERE ProductName='$productname'");
+    
+    // Reset the result pointer to beginning for the table display loop
+    mysqli_data_seek($run, 0);
+} else {
+    // Handle case when no results found
+    $row = null;
+}
 
 ?>
 
@@ -121,13 +131,65 @@ $update=mysqli_query($conn,"UPDATE stockin SET ProductQuantity='$Remain_Product'
 
         <section>
             <div class="print">
-
-                <h1 style="text-align: center;">Ecole Primaire Sainte Anne</h1>
-                <p style="text-align: center;">+250 0790154696</p>
-                <p style="text-align: center;">Email:saint_anne@gmail.com</p> <br>
-                <p style="text-align: center;"><?php echo date("Y-m-d h:i:sa") ?> </p><br><br>
-                <h3 style="text-align: center ; text-decoration: underline;">STOCK MAGEMENT REPORT </h3> <br>
-
+                <div class="print-header">
+                    <h1>Ecole Primaire Sainte Anne</h1>
+                    <p>Contact: +250 0790154696</p>
+                    <p>Email: saint_anne@gmail.com</p>
+                    <p class="date"><?php echo date("Y-m-d h:i:sa") ?></p>
+                    <h3>STOCK MANAGEMENT REPORT</h3>
+                </div>
+                
+                <div class="print-content">
+                    <table class="print-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name of Product</th>
+                                <th>Date</th>
+                                <th>Quantuty</th>
+                                <th>Price</th>
+                                <th>Total Price</th>
+                                <th>DateOUT</th>
+                                <th>QuantityOUT</th>
+                                <th>Total Stock</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            if ($run && mysqli_num_rows($run) > 0) {
+                                $number = 1;
+                                while ($row = mysqli_fetch_assoc($run)) {
+                                    ?>
+                                    <tr>
+                                        <td data-label="S.No"><?php echo $number ?></td>
+                                        <td data-label="Name"><?php echo htmlspecialchars($row['ProductName']) ?></td>
+                                        <td data-label="Age"><?php echo htmlspecialchars($row['StockInDate']) ?></td>
+                                        <td data-label="Marks%"><?php echo $Rem = $row['StockInQuantity'] - $row['StockOutQuantity'] ?></td>
+                                        <td data-label="Marks%"><?php echo htmlspecialchars($row['Price']) ?></td>
+                                        <td data-label="Staus"><?php echo htmlspecialchars($row['TotalPrice']) ?></td>
+                                        <td data-label="Age"><?php echo htmlspecialchars($row['StockOutDate']) ?></td>
+                                        <td data-label="Marks%"><?php echo htmlspecialchars($row['StockOutQuantity']) ?></td>
+                                        <td data-label="Marks%"><?php echo $Rem + $row['StockOutQuantity'] ?></td>
+                                    </tr>
+                                    <?php
+                                    $number++;
+                                }
+                            } else {
+                                ?>
+                                <tr>
+                                    <td colspan="9" style="text-align: center;">No records found</td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="print-footer">
+                    <p>Generated by: <?php echo htmlspecialchars($_SESSION["userName"]) ?></p>
+                    <p>Date: <?php echo date("Y-m-d") ?></p>
+                </div>
             </div>
             <div style="display: flex; justify-content: space-between;">
                 <div>
@@ -155,31 +217,32 @@ $update=mysqli_query($conn,"UPDATE stockin SET ProductQuantity='$Remain_Product'
                     </thead>
                     <tbody>
                         <?php
-
-                        if ($row > 0) {
-                            $number=1;
+                        if ($run && mysqli_num_rows($run) > 0) {
+                            $number = 1;
                             while ($row = mysqli_fetch_assoc($run)) {
-                        ?>
+                                ?>
                                 <tr>
-
                                     <td data-label="S.No"><?php echo $number ?></td>
-                                    <td data-label="Name"><?php echo $row['ProductName'] ?></td>
-                                    <td data-label="Age"><?php echo $row['StockInDate'] ?></td>
-                                    <td data-label="Marks%"><?php echo $Rem= $row['StockInQuantity']-$row['StockOutQuantity']?></td>
-                                    <td data-label="Marks%"><?php echo $row['Price'] ?></td>
-                                    <td data-label="Staus"><?php echo $row['TotalPrice'] ?></td>
-                                    <td data-label="Age"><?php echo $row['StockOutDate'] ?></td>
-                                    <td data-label="Marks%"><?php echo $row['StockOutQuantity'] ?></td>
-                                    <td data-label="Marks%"><?php echo $Rem + $row['StockOutQuantity']?></td>
+                                    <td data-label="Name"><?php echo htmlspecialchars($row['ProductName']) ?></td>
+                                    <td data-label="Age"><?php echo htmlspecialchars($row['StockInDate']) ?></td>
+                                    <td data-label="Marks%"><?php echo $Rem = $row['StockInQuantity'] - $row['StockOutQuantity'] ?></td>
+                                    <td data-label="Marks%"><?php echo htmlspecialchars($row['Price']) ?></td>
+                                    <td data-label="Staus"><?php echo htmlspecialchars($row['TotalPrice']) ?></td>
+                                    <td data-label="Age"><?php echo htmlspecialchars($row['StockOutDate']) ?></td>
+                                    <td data-label="Marks%"><?php echo htmlspecialchars($row['StockOutQuantity']) ?></td>
+                                    <td data-label="Marks%"><?php echo $Rem + $row['StockOutQuantity'] ?></td>
                                 </tr>
-
-                        <?php
-                            $number++;
+                                <?php
+                                $number++;
                             }
+                        } else {
+                            ?>
+                            <tr>
+                                <td colspan="9" style="text-align: center;">No records found</td>
+                            </tr>
+                            <?php
                         }
                         ?>
-
-
                     </tbody>
                 </table>
                 <!-- <h4>Total Of Amount</h4> -->

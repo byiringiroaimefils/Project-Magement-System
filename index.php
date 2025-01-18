@@ -18,7 +18,7 @@ if (isset($_POST['signin'])) {
     if ($row) {
         $_SESSION["userName"] = $row["userName"];
         $_SESSION["password"] = $row["password"];
-        header("Location:/project magement system/Pages/DashBoard.php");
+        header("Location:/Project-Magement-System/Pages/DashBoard.php");
         $mess = 'Email $ Password Correct!!';
         echo"<script>alert('Email $ Password Correct!!')</script>";
     } else {
