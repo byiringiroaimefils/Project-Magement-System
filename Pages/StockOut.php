@@ -44,6 +44,73 @@ $row = mysqli_num_rows($run);
             font-weight: bolder;
             text-transform: uppercase;
         }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .print {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .print-display {
+            display: none;
+
+        }
+
+
+        @media print {
+
+            .print {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .print-display {
+                display: flex;
+
+            }
+
+            header,
+            .printButton {
+                display: none;
+            }
+
+            .print {
+                display: block;
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        .printButton {
+            margin: 20px;
+            padding: 10px 20px;
+            background: rgb(7, 7, 66);
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #555;
+        }
     </style>
 </head>
 
@@ -53,83 +120,89 @@ $row = mysqli_num_rows($run);
             <nav>
                 <div class="logo">
                     <div class="logos">
-                        <h2>Saint  Anne</h2>
+                        <h2>Saint Anne</h2>
                     </div>
                     <div class="link" id="link">
                         <button onclick="corss()" id="Hidden">Cross</button>
                         <ul>
-                            <li><img src="../Resources/dashboard.png" alt="" class="icon"><a href="./DashBoard.php">DashBoard</a></li>
-                            <li><img src="../Resources/product.png" alt="" class="icon"><a href="./Products.php">Product</a></li>
-                            <li><img src="../Resources/product.png" alt="" class="icon"><a href="./stockIn.php">StockIn</a></li>
-                            <li><img src="../Resources//out-of-stock.png" alt="" class="icon"><a href="../Pages/StockOut.php">StochOut</a></li>
-                            <li><img src="../Resources/report.png" alt="" class="icon"><a href="../Pages/Report.php">Report</a> </li>
+                            <li><img src="../Resources/dashboard.png" alt="" class="icon"><a
+                                    href="./DashBoard.php">DashBoard</a></li>
+                            <li><img src="../Resources/product.png" alt="" class="icon"><a
+                                    href="./Products.php">Products</a>
+                            </li>
+                            <li><img src="../Resources/product.png" alt="" class="icon"><a
+                                    href="./stockIn.php">StockIn</a>
+                            </li>
+                            <li><img src="../Resources/out-of-stock.png" alt="" class="icon"><a
+                                    href="Stockout.php">StochOut</a>
+                            </li>
+                            <li><img src="../Resources/report.png" alt="" class="icon"><a href="Report.php">Report</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
+
                 <div style="display: flex;">
-                    <img src="../Resources//user.png" alt="" onclick="userFunction()" style="width: 35px; margin-right: 9px; cursor: pointer;">
-                    <img src="../Resources//hamburger-menu.png" alt="" onclick="Bar()" id="Hidden" style="width: 35px; cursor: pointer;">
+                    <h4 style="margin-top: 10px; color:gray;"><?php echo htmlspecialchars($_SESSION["userName"]) ?></h4>
+                    <img src="../Resources//dropdown.png" alt="" onclick="userFunction()"
+                        style="width: 20px; margin-right: 12px; margin-top: 10px; cursor: pointer;">
                 </div>
             </nav>
         </header>
+
         <div class="user" id="user">
-            <h4><?php echo  $_SESSION["userName"] ?></h4>
+            <h4><?php echo $_SESSION["userName"] ?></h4>
             <p> <a href="./Logout.php">LogOut</a></p>
 
         </div>
+
         <section>
             <h2>Stock Our Products </h2><br><br>
-            <p class="stockinp" style="color:  rgb(7, 7, 66);">Here is where you are going to look product remains In Stock.</p>
+            <p class="stockinp" style="color:  rgb(7, 7, 66);">Here is where you are going to look product remains In
+                Stock.</p>
             <div class="Section">
                 <div class="Top">
-                    <div class="search">
-                        <form action="" method="get">
-
-                            <img src="../Resources/search.png" alt="" class="icon">
-                            <input type="text" placeholder="Search..." name="Search">
-                            <!-- <button>Search</button> -->
-                        </form>
-                    </div>
                     <div class="NewButton">
-                        <button style="margin-right: 20px;"><a href="./Form/StockoutForm.php" style="text-decoration: none; color: white; border-radius: 9px; ">STOCK OUT</a></button>
+                        <button style="margin-left: 25px;"><a href="./Form/StockoutForm.php"
+                                style="text-decoration: none; color: white; border-radius: 9px; ">Stock out</a></button>
                     </div>
                 </div> <br>
-                <table class="table">
+                <table style="margin: 25px; width: 95%;">
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>NAME OF PRODUCT</th>
                             <th>DATE</th>
                             <th>QUANTITY</th>
+                            <th>ACTION</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         if ($row > 0) {
-                            $number=1;
+                            $number = 1;
                             while ($row = mysqli_fetch_assoc($run)) {
-                        ?>
-
-
+                                ?>
                                 <tr>
-                                    <td><?php echo $number?></td>
+                                    <td><?php echo $number ?></td>
                                     <td><?php echo $row['ProductName'] ?></td>
                                     <td><?php echo $row['ProductDate'] ?></td>
                                     <td><?php echo $row['ProductQuantity'] ?></td>
                                     <td>
-                                        <button class="Edit" style="background-color: red;"><a style="color: white; text-decoration: none;" href="Action/DeleteSout.php ?id=<?php echo $row['StockOutId'] ?>"><img src="../Resources/delete.png" alt="" style="width: 15px;"></button>
-                                        <!-- <button class="Edit"><a style="color: white; text-decoration: none;" href="Pages/Action/EditSout.php ?id=<?php echo $row['ProductId'] ?>">Edit</button> -->
+                                        <button class="Edit" style="background-color: red;"><a
+                                                style="color: white; text-decoration: none;"  href="Action/DeleteSout.php ?id=<?php echo $row['StockOutId'] ?>"><img
+                                                    src="../Resources/delete.png" alt="" style="width: 15px;"></button>
+                                        <button class="Edit"><a style="color: white; text-decoration: none;"  href="Action/EditSout.php ?id=<?php echo $row['StockOutId'] ?>"><img
+                                                    src="../Resources/edit.png" alt="" style="width: 15px;"></button>
 
                                     </td>
 
                                 </tr>
-
-
-                        <?php
-                          $number++;
+                                <?php
+                                $number++;
                             }
                         } else {
-                            // echo " <script>alert('No products found matching the search criteria')</script>";
+                            echo " <script>alert('No products found matching the search criteria')</script>";
                         }
                         ?>
                     </tbody>
@@ -139,8 +212,7 @@ $row = mysqli_num_rows($run);
     </div>
     <div style="position: absolute; top: 92%; left:50%; transform: translate(-50%,-50%);">
         <footer>
-            &copy;2024 Stock Magement
-            <p>Ecole Primaire Sainte Anne</p>
+            &copy; 2024 Stock Management System - Ecole Primaire Sainte Anne
         </footer>
     </div>
 </body>

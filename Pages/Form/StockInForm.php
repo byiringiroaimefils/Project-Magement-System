@@ -63,35 +63,6 @@ if (isset($_POST['StockIn'])) {
 
 <body>
     <div class="heder">
-
-        <!-- <header>
-            <nav>
-                <div class="logo">
-                    <div class="logos">
-                        <h2>Stock Management</h2>
-                    </div>
-                    <div class="link" id="link">
-                        <button onclick="corss()" id="Hidden">Cross</button>
-                        <ul>
-                            <li><img src="/Resources//dashboard.png" class="icon"><a href="../DashBoard.php">DashBoard</a></li>
-                            <li><img src="/Resources/./product.png"  class="icon"><a href="../Products.php">Products</a></li>
-                            <li><img src="/Resources//product.png"  class="icon"><a href="../stockIn.php">StockIn</a></li>
-                            <li><img src="/Resources//outstock (1).png" class="icon"><a href="../StockOut.php">StochOut</a></li>
-                            <li><img src="/Resources//report.png" class="icon"><a href="../Report.php">Report</a> </li>
-                        </ul>
-                    </div>
-                </div>
-                <div style="display: flex;">
-                    <img src="../Resources//user.png" alt="" onclick="userFunction()" style="width: 35px; margin-right: 9px; cursor: pointer;">
-                    <img src="../Resources//hamburger-menu.png" alt="" onclick="Bar()" id="Hidden" style="width: 35px; cursor: pointer;">
-                </div>
-            </nav>
-        </header>
-        <div class="user" id="user">
-            <h4><?php echo  $_SESSION["userName"] ?></h4>
-            <p> <a href="./Logout.php">LogOut</a></p>
-
-        </div><br> -->
         <div class="Stockin" style="margin-top: 50px;">
             <button class="backbotton"> <a href="../Products.php">Back</a> </button>
             <section>
@@ -105,8 +76,6 @@ if (isset($_POST['StockIn'])) {
 
                     <label for="" style="font-weight: bold;">Pice</label><br><br>
                     <input type="text" placeholder="0.00FRw" name="price" required><br><br><br>
-                    <!-- <label for="" style="font-weight: bold;" name="">Total Pice</label><br><br>
-                    <input type="number" placeholder="0.00FRw" name="Total_price"><br><br> -->
                     <button name="StockIn" style="border-radius: 5px;">Add product </button>
 
                 </form>

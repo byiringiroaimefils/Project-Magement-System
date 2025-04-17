@@ -45,7 +45,6 @@
                         if ($confPassword !== $passWord) {
                             $confPasswordErr = 'Password not match';
                         } else {
-
                             $confPassword = $confPassword;
                         }
                     }

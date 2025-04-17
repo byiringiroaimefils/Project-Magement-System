@@ -2,7 +2,7 @@
 include('Connection.php');
 session_start();
 if (!isset($_SESSION["userName"]) || empty($_SESSION["userName"])) {
-    header("Location:/project%20magement%20system/index.php");
+    header("Location:/Project-Magement-System/index.php");
     exit();
 }
 
@@ -46,6 +46,73 @@ INNER JOIN StockOut  ON StockOut.ProductId = Product.ProductId";
             font-weight: bolder;
             text-transform: uppercase;
         }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .print {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .print-display {
+            display: none;
+
+        }
+
+
+        @media print {
+
+            .print {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .print-display {
+                display: flex;
+
+            }
+
+            header,
+            .printButton {
+                display: none;
+            }
+
+            .print {
+                display: block;
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        .printButton {
+            margin: 20px;
+            padding: 10px 20px;
+            background: rgb(7, 7, 66);
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #555;
+        }
     </style>
 </head>
 
@@ -55,37 +122,37 @@ INNER JOIN StockOut  ON StockOut.ProductId = Product.ProductId";
             <nav>
                 <div class="logo">
                     <div class="logos">
-                        <h2>Saint  Anne</h2>
+                        <h2>Saint Anne</h2>
                     </div>
                     <div class="link" id="link">
                         <button onclick="corss()" id="Hidden">Cross</button>
                         <ul>
-                            <li><img src="../Resources/dashboard.png" alt="" class="icon"><a href="./DashBoard.php">DashBoard</a></li>
-                            <li><img src="../Resources/product.png" alt="" class="icon"><a href="./Products.php">Products</a></li>
-                            <li><img src="../Resources/product.png" alt="" class="icon"><a href="./stockIn.php">StockIn</a></li>
-                            <li><img src="../Resources/out-of-stock.png" alt="" class="icon"><a href="Stockout.php">StochOut</a></li>
-                            <li><img src="../Resources/report.png" alt="" class="icon"><a href="Report.php">Report</a> </li>
+                            <li><img src="../Resources/dashboard.png" alt="" class="icon"><a
+                                    href="./DashBoard.php">DashBoard</a></li>
+                            <li><img src="../Resources/product.png" alt="" class="icon"><a
+                                    href="./Products.php">Products</a>
+                            </li>
+                            <li><img src="../Resources/product.png" alt="" class="icon"><a
+                                    href="./stockIn.php">StockIn</a>
+                            </li>
+                            <li><img src="../Resources/out-of-stock.png" alt="" class="icon"><a
+                                    href="Stockout.php">StochOut</a>
+                            </li>
+                            <li><img src="../Resources/report.png" alt="" class="icon"><a href="Report.php">Report</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
 
                 <div style="display: flex;">
-                    <img src="../Resources//user.png" alt="" onclick="userFunction()" style="width: 35px; margin-right: 9px; cursor: pointer;">
-                    <!-- <img src="../Resources//hamburger-menu.png" alt="" onclick="Bar()" id="Hidden" style="width: 35px; cursor: pointer;"> -->
+                    <h4 style="margin-top: 10px; color:gray;"><?php echo htmlspecialchars($_SESSION["userName"]) ?></h4>
+                    <img src="../Resources//dropdown.png" alt="" onclick="userFunction()"
+                        style="width: 20px; margin-right: 12px; margin-top: 10px; cursor: pointer;">
                 </div>
-
-                <!-- <div class="account">
-                    <div style="text-align: center;margin-right: 50px; display: flex; gap: 2px;">
-                    <h5><?php echo substr($_SESSION["userName"], 0, 1) ?></h5>
-                    <button style=" margin-left: 8px ; border: none; background-color: transparent;">
-                        <a href="./Logout.php">LogOut</a>
-                    </button>
-                    </div>
-                </div> -->
             </nav>
         </header>
         <div class="user" id="user">
-            <h4><?php echo  $_SESSION["userName"] ?></h4>
+            <h4><?php echo $_SESSION["userName"] ?></h4>
             <p> <a href="./Logout.php">LogOut</a></p>
 
         </div>
@@ -94,18 +161,8 @@ INNER JOIN StockOut  ON StockOut.ProductId = Product.ProductId";
             <p class="stockinp" style="color: rgb(7, 7, 66);">Here is where you are going to add new product.</p>
             <div class="Section">
                 <div class="Top">
-                    <div class="search">
-                        <form action="" method="get">
-                            <img src="../Resources/search.png" alt="" class="icon">
-                            <input type="text" placeholder="Search..." name="Search">
-                            <!-- <button>Search</button> -->
-                        </form>
-                    </div>
-                    <!-- <div class="NewButton">
-                        <button><a href="./Form/StockIn.php" style="text-decoration: none; color: white; border-radius: 9px;">Add New</a></button>
-                    </div> -->
                 </div> <br>
-                <table class="table">
+                <table style="margin: 25px; width: 95%;">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -114,37 +171,42 @@ INNER JOIN StockOut  ON StockOut.ProductId = Product.ProductId";
                             <th>PRICE</th>
                             <th>TOTAL PRICE</th>
                             <th>DATE</th>
-                            <!-- <th>ACTION</th> -->
+                            <th>ACTION</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
 
                         if ($row > 0) {
-                            $number=1;
+                            $number = 1;
                             while ($row = mysqli_fetch_assoc($run)) {
-                        ?>
+                                ?>
                                 <tr>
 
                                     <td data-label="S.No"><?php echo $number ?></td>
                                     <td data-label="Name"><?php echo $row['ProductName'] ?></td>
-                                    <td data-label="Marks%"><?php echo $row['ProductQuantity']?></td>
+                                    <td data-label="Marks%"><?php echo $row['ProductQuantity'] ?></td>
                                     <td data-label="Marks%"><?php echo $row['Price'] ?></td>
                                     <td data-label="Staus"><?php echo $row['TotalPrice'] ?></td>
                                     <td data-label="Age"><?php echo $row['ProductDate'] ?></td>
                                     <td data-label="Age">
-                                        <button class="Edit" style="background-color: red;"><a style="color: white; text-decoration: none;" href="Action/DeleteSin.php ?id=<?php echo $row['StockInId'] ?>"><img src="../Resources/delete.png" alt=""style="width: 15px;"></button>
-                                        <button class="Edit"><a style="color: white; text-decoration: none;" href="Action/EditSin.php ?id=<?php echo $row['StockInId'] ?>"><img src="../Resources/edit.png" alt="" style="width: 15px;"></button>
+                                        <button class="Edit" style="background-color: red;"><a
+                                                style="color: white; text-decoration: none;"
+                                                href="Action/DeleteSin.php ?id=<?php echo $row['StockInId'] ?>"><img
+                                                    src="../Resources/delete.png" alt="" style="width: 15px;"></button>
+                                        <button class="Edit"><a style="color: white; text-decoration: none;"
+                                                href="Action/EditSin.php ?id=<?php echo $row['StockInId'] ?>"><img
+                                                    src="../Resources/edit.png" alt="" style="width: 15px;"></button>
 
                                     </td>
 
 
                                 </tr>
-                        <?php
-                        $number++;
+                                <?php
+                                $number++;
                             }
                         } else {
-                            // echo " <script>alert('No products found matching the search criteria')</script>";
+                            echo " <script>alert('No products found matching the search criteria')</script>";
                         }
                         ?>
 
@@ -156,10 +218,7 @@ INNER JOIN StockOut  ON StockOut.ProductId = Product.ProductId";
     </div>
     <div style="position: absolute; top: 92%; left:50%; transform: translate(-50%,-50%);">
         <footer>
-            &copy;2024 Stock Magement
-            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
-            <p>Ecole Primaire Sainte Anne</p>
-
+            &copy; 2024 Stock Management System - Ecole Primaire Sainte Anne
         </footer>
     </div>
 </body>

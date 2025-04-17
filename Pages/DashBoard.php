@@ -1,5 +1,5 @@
 <?php
- include('Connection.php');
+include('Connection.php');
 session_start();
 
 
@@ -17,11 +17,11 @@ $product = mysqli_num_rows($run);
 
 
 if ($product >= 0 && $product <= 5) {
-    $borderMess='Low Product';
-}elseif($product >= 6 && $product <= 15){
-    $borderMess='Enough Product';
-}else{
-    $borderMess='Very Enough Product';
+    $borderMess = 'Low Product';
+} elseif ($product >= 6 && $product <= 15) {
+    $borderMess = 'Enough Product';
+} else {
+    $borderMess = 'Very Enough Product';
 
 }
 
@@ -50,7 +50,7 @@ $rowin = mysqli_num_rows($run);
     <link rel="stylesheet" href="../Style/css/style.css">
     <link rel="stylesheet" href="../Style/css/rome.css">
     <style>
-        .account h5{
+        .account h5 {
             background: #00001a;
             color: white;
             padding: 9px;
@@ -69,32 +69,43 @@ $rowin = mysqli_num_rows($run);
             <nav>
                 <div class="logo">
                     <div class="logos">
-                        <h2 style="color:  rgb(7, 7, 66);">Saint  Anne</h2>
+                        <h2>Saint Anne</h2>
                     </div>
                     <div class="link" id="link">
-                        <button onclick="corss()"  id="Hidden">Cross</button>
+                        <button onclick="corss()" id="Hidden">Cross</button>
                         <ul>
-                            <li><img src="../Resources//dashboard.png" alt="" class="icon"><a href=".//DashBoard.php">DashBoard</a></li>
-                            <li><img src="../Resources//product.png" alt="" class="icon"><a href="./Products.php">Products</a></li>
-                            <li><img src="../Resources//product.png" alt="" class="icon"><a href="./stockIn.php">stockIn</a></li>
-                            <li><img src="../Resources//out-of-stock.png" alt="" class="icon"><a href="./StockOut.php">StochOut</a></li>
-                            <li><img src="../Resources//report.png" alt="" class="icon"><a href="./Report.php">Report</a> </li>
+                            <li><img src="../Resources/dashboard.png" alt="" class="icon"><a
+                                    href="./DashBoard.php">DashBoard</a></li>
+                            <li><img src="../Resources/product.png" alt="" class="icon"><a
+                                    href="./Products.php">Products</a>
+                            </li>
+                            <li><img src="../Resources/product.png" alt="" class="icon"><a
+                                    href="./stockIn.php">StockIn</a>
+                            </li>
+                            <li><img src="../Resources/out-of-stock.png" alt="" class="icon"><a
+                                    href="Stockout.php">StochOut</a>
+                            </li>
+                            <li><img src="../Resources/report.png" alt="" class="icon"><a href="Report.php">Report</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
+
                 <div style="display: flex;">
-                <img src="../Resources//user.png" alt="" onclick="userFunction()" style="width: 35px; margin-right: 9px; cursor: pointer;">
-                <img src="../Resources//hamburger-menu.png" alt="" onclick="Bar()" id="Hidden" style="width: 35px; cursor: pointer;">
+                    <h4 style="margin-top: 10px; color:gray;"><?php echo htmlspecialchars($_SESSION["userName"]) ?></h4>
+                    <img src="../Resources//dropdown.png" alt="" onclick="userFunction()"
+                        style="width: 20px; margin-right: 12px; margin-top: 10px; cursor: pointer;">
                 </div>
-           
             </nav>
         </header>
-        <div class="user" id="user">
-            <h4><?php echo  $_SESSION["userName"]?></h4>
-            <p> <a href="./Logout.php" >LogOut</a></p>
 
+        <!-- User dropdown -->
+
+        <div class="user" id="user">
+            <h4><?php echo $_SESSION["userName"] ?></h4>
+            <p> <a href="./Logout.php">LogOut</a></p>
         </div>
-        <div class="body"> 
+        <div class="body">
             <div class="flex">
                 <div class="div2">
                     <div class="Products">
@@ -114,10 +125,10 @@ $rowin = mysqli_num_rows($run);
                         </div>
                         <div class="border">
                             <div>
-                                <h3><?php echo $borderMess?></h3>
+                                <h3><?php echo $borderMess ?></h3>
                             </div>
                             <div class="Low">
-                                <p><?php echo $product?></p>
+                                <p><?php echo $product ?></p>
                             </div>
                         </div>
                     </div>
@@ -134,12 +145,12 @@ $rowin = mysqli_num_rows($run);
 
             </div>
         </div>
-        <footer >
+        <footer>
             &copy;2024 Stock Magement
         </footer>
     </div>
 
-
+    <!-- Bostrap for Handling Calender Function on DashBoard -->
     <script src="../js//jquery-3.3.1.min.js"></script>
     <script src="../js//popper.min.js"></script>
     <script src="../js//bootstrap.min.js"></script>

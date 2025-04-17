@@ -281,20 +281,21 @@ input {
     border-radius: 5px;
 }
 
-.Section {
+/* .Section {
     background-color: #f1f1f1;
     border: 0.5px solid #ccc;
     width: 95%;
     padding: 9px;
     text-align: left;
-    /* margin-right: 20px; */
+    margin-right: 20px;
     margin-left: 10px;
     position: absolute;
     top: 30%;
     left: 25px;
-    /* overflow:scroll; */
+    overflow:scroll;
 
-}
+} */
+
 .stockinp{
     margin-left: 28px;
     /* margin-top: 2px; */
