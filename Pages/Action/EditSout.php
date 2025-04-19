@@ -3,7 +3,7 @@ include('../Connection.php');
 session_start();
 
 if (!isset($_SESSION["userName"]) || empty($_SESSION["userName"])) {
-    header("Location:/project%20magement%20system/index.php");
+    header("Location:/Project-Magement-System/index.php");
     exit();
 }
 $id = $_GET["id"];
@@ -62,18 +62,16 @@ $row = mysqli_num_rows($run);
                             <label for="" style="font-weight: bold;">Name </label> <br><br>
                             <input type="text" placeholder="Name of product" name="product" required
                                 value=" <?php echo $row['ProductName'] ?>"><br><br>
-
+                            <label for="" style="font-weight: bold;">Available Quantity</label><br><br>
+                            <input type="text" placeholder="Kilograms" name="available"
+                                value="<?php echo $products['ProductQuantity'] ?>"><br><br>
                             <label for="" style="font-weight: bold;">Quntity</label><br><br>
                             <input type="text" placeholder="Kilograms" name="Quantity" required
                                 value="<?php echo $row['ProductQuantity'] ?>"><br><br>
-
-
                             <label for="" style="font-weight: bold;">Pice</label><br><br>
                             <input type="text" placeholder="0.00FRw" name="price" required
-                                value="<?php echo $row['Price'] ?>"><br><br>
-                            <label for="" style="font-weight: bold;" name="">Total Pice</label><br><br>
-                            <input type="text" placeholder="0.00FRw" name="Total_price"
-                                value="<?php echo $row['TotalPrice'] ?>"><br><br>
+                             value="<?php echo $products['Price'] ?>"
+                            ><br><br><br>
                             <button class=""> <a href="../Pages//Products.php">Back</a> </button>
                             <button name="Update">Update</button>
 
@@ -96,16 +94,14 @@ include("../Connection.php");
 $id = $_GET['id'];
 if (isset($_POST["Update"])) {
     $productQuantity = $_POST['Quantity'];
-    $productprice = $_POST['price'];
-    $productTotal_price = $productQuantity * $productprice;
 
-    $sqli = "UPDATE stockout SET ProductQuantity =' $productQuantity',Price ='$productprice',TotalPrice ='$productTotal_price' WHERE StockInId='$id';";
+    $sqli = "UPDATE stockout SET ProductQuantity =' $productQuantity' WHERE StockOutId='$id';";
     $run = mysqli_query($conn, $sqli);
 
 
     if ($run == true) {
         echo "<script>alert('Product Updated ✔')</script>";
-        // header("Location:/project%20magement%20system/Pages/Products.php");
+        header("Location:/Project-Magement-System/Pages/Products.php");
     } else {
         echo "<script>alert('Product Not Updated ')<script/>";
         // echo 'not done';

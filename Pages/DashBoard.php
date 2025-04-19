@@ -120,15 +120,16 @@ $rowin = mysqli_num_rows($run);
                 <div class="div3">
                     <div class="flexborder">
                         <div class="border2">
-                            <h3>CURRENT TIME</h3>
-                            <h5 class="Date" id="time"></h5>
+                            <h3>Total Products</h3>
+                            <p style="font-weight: bold; color: white;"><?php echo $product ?></p>
+                            <!-- <h5 class="Date" id="time"></h5> -->
                         </div>
                         <div class="border">
                             <div>
                                 <h3><?php echo $borderMess ?></h3>
                             </div>
-                            <div class="Low">
-                                <p><?php echo $product ?></p>
+                            <div>
+                                <p style="font-weight: bold; color: white;"><?php echo $product ?></p>
                             </div>
                         </div>
                     </div>
@@ -145,9 +146,13 @@ $rowin = mysqli_num_rows($run);
 
             </div>
         </div>
-        <footer>
-            &copy;2024 Stock Magement
-        </footer>
+
+        <div style="position: absolute; top: 92%; left:50%; transform: translate(-50%,-50%);">
+            <footer>
+                &copy; 2025 Stock Management System - Ecole Primaire Sainte Anne
+            </footer>
+        </div>
+
     </div>
 
     <!-- Bostrap for Handling Calender Function on DashBoard -->

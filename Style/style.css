@@ -195,8 +195,8 @@ i {
 }
 
 .border2 .Date {
-    font-size: 17px;
-    font-weight: 700;
+    font-size: 15px;
+    /* font-weight: 700; */
 }
 
 .border2 {

@@ -7,15 +7,11 @@ if (!isset($_SESSION["userName"]) || empty($_SESSION["userName"])) {
     exit();
 }
 
-// if (isset($_GET['Search'])) {
-// $filter = $_GET['Search'];
-// $filter = mysqli_real_escape_string($conn, $_GET['Search']);
 
-$sql = "SELECT * FROM  Product  
-INNER JOIN Stockout  ON Stockout.ProductId = Product.ProductId";
+$sql = "SELECT * FROM  Product,Stockout  WHERE Stockout.ProductId = Product.ProductId";
 $run = mysqli_query($conn, $sql);
 $row = mysqli_num_rows($run);
-// }
+
 
 
 ?>
@@ -30,7 +26,6 @@ $row = mysqli_num_rows($run);
     <title>saint_Anne</title>
     <link rel="stylesheet" href="../Style/style.css">
     <link rel="stylesheet" href="../Style/StyeRes.css">
-    <!-- <script src="../Functionality/js.js" ></script> -->
     <script src="../js/Functionality/js.js" defer></script>
 
     <style>
@@ -162,53 +157,59 @@ $row = mysqli_num_rows($run);
                 Stock.</p>
             <div class="Section">
                 <div class="Top">
-                    <div class="NewButton">
-                        <button style="margin-left: 25px;"><a href="./Form/StockoutForm.php"
-                                style="text-decoration: none; color: white; border-radius: 9px; ">Stock out</a></button>
-                    </div>
-                </div> <br>
-                <table style="margin: 25px; width: 95%;">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>NAME OF PRODUCT</th>
-                            <th>DATE</th>
-                            <th>QUANTITY</th>
-                            <th>ACTION</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        if ($row > 0) {
-                            $number = 1;
-                            while ($row = mysqli_fetch_assoc($run)) {
-                                ?>
-                                <tr>
-                                    <td><?php echo $number ?></td>
-                                    <td><?php echo $row['ProductName'] ?></td>
-                                    <td><?php echo $row['ProductDate'] ?></td>
-                                    <td><?php echo $row['ProductQuantity'] ?></td>
-                                    <td>
-                                        <button class="Edit" style="background-color: red;"><a
-                                                style="color: white; text-decoration: none;"  href="Action/DeleteSout.php ?id=<?php echo $row['StockOutId'] ?>"><img
-                                                    src="../Resources/delete.png" alt="" style="width: 15px;"></button>
-                                        <button class="Edit"><a style="color: white; text-decoration: none;"  href="Action/EditSout.php ?id=<?php echo $row['StockOutId'] ?>"><img
-                                                    src="../Resources/edit.png" alt="" style="width: 15px;"></button>
+                </div>
+            </div> <br>
+            <table style="margin: 25px; width: 95%;">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name of Product</th>
+                        <th>Quantity</th>
+                        <th>Product Price</th>
+                        <th>Total Price</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    if ($row > 0) {
+                        $number = 1;
+                        while ($row = mysqli_fetch_assoc($run)) {
+                            ?>
+                            <tr>
+                                <td><?php echo $number ?></td>
+                                <td><?php echo $row['ProductName'] ?></td>
+                                <td><?php echo $row['ProductQuantity'] ?></td>
+                                <td><?php echo $row['Price'] ?></td>
+                                <td><?php echo $row['TotalPrice'] ?></td>
+                                <td><?php echo $row['ProductDate'] ?></td>  
+                                <td>
+                                    <button class="Edit" style="background-color: red;"><a
+                                            style="color: white; text-decoration: none;"
+                                            href="Action/DeleteSout.php ?id=<?php echo $row['StockOutId'] ?>"><img
+                                                src="../Resources/delete.png" alt="" style="width: 15px;"></button>
+                                    <button class="Edit"><a style="color: white; text-decoration: none;"
+                                            href="Action/EditSout.php ?id=<?php echo $row['StockOutId'] ?>"><img
+                                                src="../Resources/edit.png" alt="" style="width: 15px;"></button>
 
-                                    </td>
 
-                                </tr>
+                                </td>
+
                                 <?php
-                                $number++;
-                            }
-                        } else {
-                            echo " <script>alert('No products found matching the search criteria')</script>";
+                            $number++;
                         }
+                    } else {
                         ?>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+                     <td colspan="7" style="text-align: center;">No records</td>
+                    </tr>
+                      <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
+    </div>
+    </section>
     </div>
     <div style="position: absolute; top: 92%; left:50%; transform: translate(-50%,-50%);">
         <footer>

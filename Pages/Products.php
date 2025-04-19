@@ -135,7 +135,7 @@ $row = mysqli_num_rows($run);
                 </div>
 
                 <div style="display: flex;">
-                    <h4 style="margin-top: 10px; color:gray;"><?php echo htmlspecialchars($_SESSION["userName"]) ?></h4>
+                    <h4 style="margin-top: 10px; color:gray;"><?php echo $_SESSION["userName"] ?></h4>
                     <img src="../Resources//dropdown.png" alt="" onclick="userFunction()"
                         style="width: 20px; margin-right: 12px; margin-top: 10px; cursor: pointer;">
                 </div>
@@ -146,19 +146,20 @@ $row = mysqli_num_rows($run);
             <p> <a href="./Logout.php">LogOut</a></p>
 
         </div>
-        <section>
+        <section> <br>
             <div>
                 <h2>Add New Products </h2><br><br>
                 <p class="stockinp" style="color: rgb(7, 7, 66);">Here is where you are going to add new product.</p>
             </div>
             <div class="Section">
                 <div class="Top">
-                    <div class="NewButton">
+                    <div  style=" margin-right: 8px;" class="NewButton">
                         <button><a href="./Form/product_form.php"
                                 style="width: 50px; text-decoration: none; color: white; border-radius: 9px;">New
-                                Product</a></button>
+                                Product</a>
+                        </button>
                     </div>
-                </div> <br>
+                </div>
                 <table style="margin: 25px; width: 95%;">
                     <thead>
                         <tr>
@@ -197,6 +198,11 @@ $row = mysqli_num_rows($run);
                                 <?php
                                 $number++;
                             }
+                        } else {
+                            ?>
+                            <td colspan="3" style="text-align: center;">No records</td>
+                            </tr>
+                            <?php
                         }
                         ?>
 

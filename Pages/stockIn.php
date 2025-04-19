@@ -166,12 +166,12 @@ INNER JOIN StockOut  ON StockOut.ProductId = Product.ProductId";
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>NAME OF PRODUCT</th>
-                            <th>QUANTITY</th>
-                            <th>PRICE</th>
-                            <th>TOTAL PRICE</th>
-                            <th>DATE</th>
-                            <th>ACTION</th>
+                            <th>Name of Products</th>
+                            <th>Quantiry</th>
+                            <th>Price</th>
+                            <th>Total Price</th>
+                            <th>Date</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -197,16 +197,23 @@ INNER JOIN StockOut  ON StockOut.ProductId = Product.ProductId";
                                         <button class="Edit"><a style="color: white; text-decoration: none;"
                                                 href="Action/EditSin.php ?id=<?php echo $row['StockInId'] ?>"><img
                                                     src="../Resources/edit.png" alt="" style="width: 15px;"></button>
+                                        <button class="Edit"><a style="color: white; text-decoration: none;"
+                                                href="Form/StockOutForm.php ?id=<?php echo $row['StockInId'] ?>"><img
+                                                    src="../Resources/stockout.png" alt=""
+                                                    style="width: 15px; padding: 2px;">Stock Out</button>
 
                                     </td>
 
 
-                                </tr>
+                            
                                 <?php
                                 $number++;
                             }
                         } else {
-                            echo " <script>alert('No products found matching the search criteria')</script>";
+                            ?>
+                            <td colspan="7" style="text-align: center;">No records</td>
+                            </tr>
+                            <?php
                         }
                         ?>
 

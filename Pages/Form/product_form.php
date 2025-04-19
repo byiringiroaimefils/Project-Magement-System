@@ -16,7 +16,7 @@ if (isset($_POST['StockIn'])) {
     $run = mysqli_query($conn, $sqli);
 
     if ($run == true) {
-        header('Location:/project%20magement%20system/Pages/Products.php');
+        header('Location:/Project-Magement-System/Pages/Products.php');
     } else {
         echo 'Product Not Stock In';
     }
@@ -53,12 +53,13 @@ if (isset($_POST['StockIn'])) {
 <body>
     <div class="heder">
         <div class="Stockin" style="margin-top: 50px;">
-            <button class="backbotton"> <a href="../Products.php">Back</a> </button>
             <section>
                 <form action="#" method="post" style="margin-bottom: 15%;">
-                    <label for="" style="font-weight: bold;">Name </label> <br><br>
+                    <label for="" style="font-weight: bold;">Name of Product</label> <br><br>
                     <input type="text" placeholder="Name of product" name="product" required><br><br>
-                    <button name="StockIn" style="border-radius: 5px;">Add product </button>
+
+                    <button name="StockIn" >Add product </button> <br><br>
+                    <button class="StockIn"> <a href="../Products.php" style="text-decoration: none; color: white;">Back</a> </button>
 
                 </form>
             </section>
