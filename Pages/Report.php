@@ -8,19 +8,16 @@ if (!isset($_SESSION["userName"]) || empty($_SESSION["userName"])) {
 }
 
 $sql = "
-    SELECT 
-        p.ProductId,
-        p.ProductName,
-        COALESCE(si.ProductQuantity, 0) AS StockInQuantity,
-        COALESCE(si.ProductDate, '-') AS LastStockInDate,
-        COALESCE(si.Price, 0) AS Price,
-        COALESCE(si.TotalPrice, 0) AS TotalPrice,
-        COALESCE(so.ProductQuantity, 0) AS StockOutQuantity,
-        COALESCE(so.ProductDate, '-') AS LastStockOutDate
-    FROM product p,stockIn si , stockOut so
-    WHERE  si.ProductId = p.ProductId
-    AND  so.ProductId = p.ProductId
-    GROUP BY p.ProductId, p.ProductName, si.ProductDate, si.Price, so.ProductDate
+SELECT 
+    Product.ProductName,
+    IFNULL(SUM(StockIn.ProductQuantity), 0) AS StockInQuantity,
+    IFNULL(SUM(StockOut.ProductQuantity), 0) AS StockOutQuantity,
+    (IFNULL(SUM(StockIn.ProductQuantity), 0) - IFNULL(SUM(StockOut.ProductQuantity), 0)) AS NetStock
+FROM Product
+LEFT JOIN StockIn ON Product.ProductId = StockIn.ProductId
+LEFT JOIN StockOut ON Product.ProductId = StockOut.ProductId
+GROUP BY Product.ProductId;
+
 ";
 
 
@@ -168,13 +165,13 @@ $run = mysqli_query($conn, $sql);
                     <tr>
                         <th>#</th>
                         <th>Product Name</th>
-                        <th>Stock-In Date</th>
+                        <!-- <th>Stock-In Date</th> -->
                         <th>Stock-In Quantity</th>
-                        <th>Stock-Out Date</th>
+                        <!-- <th>Stock-Out Date</th> -->
                         <th>Stock-Out Quantity</th>
-                        <th>Price</th>
-                        <th>Total Price</th>
-                        <th>Total Stock</th>
+                        <!-- <th>Price</th>
+                        <th>Total Price</th> -->
+                        <th>Net Stock</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -182,18 +179,18 @@ $run = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($run) > 0) {
                         $count = 1;
                         while ($row = mysqli_fetch_assoc($run)) {
-                            $remain = $row['StockInQuantity'] + $row['StockOutQuantity'];
+                            $net_stock = $row['StockInQuantity'] + $row['StockOutQuantity'];
                             ?>
                             <tr>
                                 <td><?php echo $count++; ?></td>
                                 <td><?php echo $row['ProductName'] ?></td>
-                                <td><?php echo $row['LastStockInDate'] ?></td>
+                                <!-- <td><?php echo $row['LastStockInDate'] ?></td> -->
                                 <td><?php echo $row['StockInQuantity'] ?></td>
-                                <td><?php echo $row['LastStockOutDate'] ?></td>
+                                <!-- <td><?php echo $row['LastStockOutDate'] ?></td> -->
                                 <td><?php echo $row['StockOutQuantity'] ?></td>
-                                <td><?php echo $row['Price'] ?></td>
-                                <td><?php echo $row['TotalPrice'] ?></td>
-                                <td><?php echo $remain ?></td>
+                                <!-- <td><?php echo $row['Price'] ?></td> -->
+                                <!-- <td><?php echo $row['TotalPrice'] ?></td> -->
+                                <td><?php echo $net_stock ?></td>
                             </tr>
                             <?php
                         }

@@ -121,8 +121,8 @@ $rowin = mysqli_num_rows($run);
                     <div class="flexborder">
                         <div class="border2">
                             <h3>Total Products</h3>
-                            <p style="font-weight: bold; color: white;"><?php echo $product ?></p>
-                            <!-- <h5 class="Date" id="time"></h5> -->
+                            <!-- <p style="font-weight: bold; color: white;"><?php echo $product ?></p> -->
+                            <h5 class="Date" id="time"></h5>
                         </div>
                         <div class="border">
                             <div>

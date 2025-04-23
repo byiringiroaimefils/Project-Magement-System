@@ -6,106 +6,81 @@ if (!isset($_SESSION["userName"]) || empty($_SESSION["userName"])) {
     header("Location:/Project-Magement-System/index.php");
     exit();
 }
+
 $id = $_GET["id"];
 
-$sqli = "SELECT * FROM product  INNER JOIN StockOut  ON StockOut.ProductId = Product.ProductId  WHERE StockOutId='$id'";
+// Fetch stockout product data
+$sqli = "SELECT product.ProductId, product.ProductName, stockout.ProductQuantity, stockout.Price, stockout.TotalPrice 
+         FROM product  
+         INNER JOIN stockout ON stockout.ProductId = product.ProductId  
+         WHERE StockOutId = '$id'";
 $run = mysqli_query($conn, $sqli);
-$row = mysqli_num_rows($run);
+$data = mysqli_fetch_assoc($run);
 
+// Handle form submission
+if (isset($_POST["Update"])) {
+    $productQuantity = $_POST['Quantity'];
+    $price = $_POST['price'];
+    $total = $productQuantity * $price;
 
+    $update = "UPDATE stockout SET ProductQuantity = '$productQuantity', Price = '$price', TotalPrice = '$total' WHERE StockOutId = '$id'";
+    $runUpdate = mysqli_query($conn, $update);
+
+    if ($runUpdate) {
+        echo "<script>alert('StockOut record updated successfully'); window.location.href='/Project-Magement-System/Pages/Products.php';</script>";
+    } else {
+        echo "<script>alert('Update failed');</script>";
+    }
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../Form/stockIn.css">
-    <link rel="stylesheet" href="/Style/style.css">
-    <link rel="stylesheet" href="/Style/StyeRes.css">
-    <script src="../Functionality//js.js" defer></script>
-
+    <title>Edit StockOut</title>
+    <link rel="stylesheet" href="stockIn.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./StyeRes.css">
     <style>
         body {
             overflow: hidden;
         }
 
-        .account h5 {
-            background: black;
-            color: white;
-            padding: 9px;
-            width: 50%;
-            border-radius: 50%;
-            margin-left: 12px;
-            font-weight: bolder;
-            text-transform: uppercase;
+        .form-container {
+            margin-top: 50px;
+        }
+
+        label {
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
-    <div class="heder">
 
-        <div class="Stockin" style="margin-top: 50px;">
-            <section>
+    <div class="form-container">
+        <form action="#" method="post">
+            <input type="hidden" name="productid" value="<?php echo $data['ProductId']; ?>">
 
-                <?php
-                if ($row > 0) {
-                    while ($row = mysqli_fetch_assoc($run)) {
-                        ?>
+            <label>Name</label><br>
+            <input type="text" name="product" value="<?php echo $data['ProductName']; ?>" readonly><br><br>
 
+            <label>Quantity</label><br>
+            <input type="number" name="Quantity" required value="<?php echo $data['ProductQuantity']; ?>"><br><br>
 
-                        <form action="#" method="post" style="margin-bottom: 15%;">
-                            <label for="" style="font-weight: bold;">Name </label> <br><br>
-                            <input type="text" placeholder="Name of product" name="product" required
-                                value=" <?php echo $row['ProductName'] ?>"><br><br>
-                            <label for="" style="font-weight: bold;">Available Quantity</label><br><br>
-                            <input type="text" placeholder="Kilograms" name="available"
-                                value="<?php echo $products['ProductQuantity'] ?>"><br><br>
-                            <label for="" style="font-weight: bold;">Quntity</label><br><br>
-                            <input type="text" placeholder="Kilograms" name="Quantity" required
-                                value="<?php echo $row['ProductQuantity'] ?>"><br><br>
-                            <label for="" style="font-weight: bold;">Pice</label><br><br>
-                            <input type="text" placeholder="0.00FRw" name="price" required
-                             value="<?php echo $products['Price'] ?>"
-                            ><br><br><br>
-                            <button class=""> <a href="../Pages//Products.php">Back</a> </button>
-                            <button name="Update">Update</button>
+            <label>Price</label><br>
+            <input type="number" name="price" step="0.01" required value="<?php echo $data['Price']; ?>"><br><br>
 
-                        </form>
-                    </section>
-                    <?php
-                    }
-                }
+            <label>Total Price</label><br>
+            <input type="text" name="total_price" readonly value="<?php echo $data['TotalPrice']; ?>"><br><br>
 
-                ?>
-        </div>
+            <button type="submit" name="Update">Update</button>
+            <a href="../Pages/Products.php"><button type="button">Back</button></a>
+        </form>
     </div>
+
 </body>
 
 </html>
-
-
-<?php
-include("../Connection.php");
-$id = $_GET['id'];
-if (isset($_POST["Update"])) {
-    $productQuantity = $_POST['Quantity'];
-
-    $sqli = "UPDATE stockout SET ProductQuantity =' $productQuantity' WHERE StockOutId='$id';";
-    $run = mysqli_query($conn, $sqli);
-
-
-    if ($run == true) {
-        echo "<script>alert('Product Updated ✔')</script>";
-        header("Location:/Project-Magement-System/Pages/Products.php");
-    } else {
-        echo "<script>alert('Product Not Updated ')<script/>";
-        // echo 'not done';
-    }
-}
-
-?>
